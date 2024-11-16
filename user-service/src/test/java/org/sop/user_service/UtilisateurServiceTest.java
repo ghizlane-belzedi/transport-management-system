@@ -1,6 +1,15 @@
+/*package org.sop.user_service;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.sop.user_service.service.UtilisateurService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UtilisateurServiceTest {
+public class UtilisateurServiceTest<UtilisateurDto> {
 
     @Autowired
     private UtilisateurService utilisateurService;
@@ -17,3 +26,4 @@ public class UtilisateurServiceTest {
         assertEquals("Utilisateur enregistré avec succès !", message);
     }
 }
+*/

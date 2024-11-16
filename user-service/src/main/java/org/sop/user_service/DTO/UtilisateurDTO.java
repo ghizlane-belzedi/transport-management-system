@@ -1,3 +1,8 @@
+package org.sop.user_service.DTO;
+
+import org.sop.user_service.model.Role;
+
+
 // UtilisateurDTO.java
 public class UtilisateurDTO {
     private String cin;
@@ -6,6 +11,7 @@ public class UtilisateurDTO {
     private String adresse;
     private String telephone;
     private Role role;
+    private String MotDePasse;
 
     public String getCin() {
         return cin;
@@ -53,5 +59,13 @@ public class UtilisateurDTO {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getMotDePasse() {
+        return MotDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        MotDePasse = motDePasse;
     }
 }

@@ -1,3 +1,5 @@
+/*package org.sop.user_service.Utils;
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
@@ -50,3 +52,4 @@ public class JwtUtil {
         return expirationDate.before(new Date());
     }
 }
+*/

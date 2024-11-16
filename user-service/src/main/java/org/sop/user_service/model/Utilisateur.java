@@ -1,11 +1,13 @@
+package org.sop.user_service.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import org.sop.user_service.model.Role;
+
 import java.util.List;
-import lambok.Data;
+
 
 @Entity
 @Table(name="Utilisateur")
-@Data
 public class Utilisateur {
 
     @Id
@@ -127,13 +129,13 @@ public class Utilisateur {
     public void MAJInformations() {
         // Logique de mise à jour
     }
-
+/*
     // Souscrire à un abonnement
     public Abonnement souscrireAbonnement(PlanAbonnement plan) {
         // Logique pour souscrire à un abonnement
         return new Abonnement();
     }
-
+*/
     // Annuler un abonnement
     public boolean annulerAbonnement(String idAbonnement) {
         // Logique pour annuler un abonnement

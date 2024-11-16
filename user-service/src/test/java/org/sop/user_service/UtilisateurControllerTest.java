@@ -1,3 +1,21 @@
+package org.sop.user_service;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.ResultMatcher;
+
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
@@ -10,21 +28,21 @@ public class UtilisateurControllerTest {
     public void testInscriptionEndpoint() throws Exception {
         String utilisateurJson = "{ \"cin\": \"AB12345\", \"nomUtilisateur\": \"testUser\", \"email\": \"test@example.com\", \"motDePasse\": \"password123\" }";
 
-        mockMvc.perform(post("/api/utilisateurs/inscription")
+        mockMvc.perform((RequestBuilder) post("/api/utilisateurs/inscription")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(utilisateurJson))
+                        .contentType(MediaType.valueOf(utilisateurJson)))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Utilisateur enregistré avec succès !"));
+                .andExpect((ResultMatcher) content().string("Utilisateur enregistré avec succès !"));
     }
 
     @Test
     public void testConnexionEndpoint() throws Exception {
         String connexionJson = "{ \"nomUtilisateur\": \"testUser\", \"motDePasse\": \"password123\" }";
 
-        mockMvc.perform(post("/api/utilisateurs/connexion")
+        mockMvc.perform((RequestBuilder) post("/api/utilisateurs/connexion")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(connexionJson))
+                        .contentType(MediaType.valueOf(connexionJson)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.token").exists());
+                .andExpect((ResultMatcher) jsonPath("$.token").exists());
     }
 }

@@ -1,4 +1,5 @@
-// UtilisateurRepository.java
+package org.sop.user_service.DAO;// UtilisateurRepository.java
+import org.sop.user_service.model.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

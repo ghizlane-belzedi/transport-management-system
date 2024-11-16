@@ -1,4 +1,7 @@
-// UtilisateurService.java
+package org.sop.user_service.service;// UtilisateurService.java
+import org.sop.user_service.DAO.UtilisateurRepository;
+import org.sop.user_service.DTO.UtilisateurDTO;
+import org.sop.user_service.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
