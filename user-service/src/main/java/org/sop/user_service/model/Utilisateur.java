@@ -26,9 +26,13 @@ public class Utilisateur {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
     private String adresse;
+
+    @Column(nullable = false, unique = true)
     private String telephone;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
