@@ -11,6 +11,7 @@ import java.util.List;
 public class Utilisateur {
 
     @Id
+    @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUtilisateur;
 

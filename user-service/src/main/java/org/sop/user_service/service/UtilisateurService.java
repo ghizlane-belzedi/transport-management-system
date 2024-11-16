@@ -74,11 +74,11 @@ public class UtilisateurService {
                 .collect(Collectors.toList());
     }
 
-    // Trouver un utilisateur par son nom
     public Optional<UtilisateurDTO> trouverParNomUtilisateur(String nomUtilisateur) {
         Optional<Utilisateur> utilisateur = utilisateurRepository.findByNomUtilisateur(nomUtilisateur);
         return utilisateur.map(this::convertirUtilisateurEnDto);
     }
+
 
     // Trouver un utilisateur par son email
     public Optional<UtilisateurDTO> trouverParEmail(String email) {
@@ -86,14 +86,16 @@ public class UtilisateurService {
         return utilisateur.map(this::convertirUtilisateurEnDto);
     }
 
-    // Supprimer un utilisateur
-    public void supprimerUtilisateur(int idUtilisateur) {
-        if (utilisateurRepository.existsById(idUtilisateur)) {
-            utilisateurRepository.deleteById(idUtilisateur);
+    // Supprimer un utilisateur par nom d'utilisateur
+    public void supprimerUtilisateurParNom(String nomUtilisateur) {
+        Optional<Utilisateur> utilisateur = utilisateurRepository.findByNomUtilisateur(nomUtilisateur);
+        if (utilisateur.isPresent()) {
+            utilisateurRepository.delete(utilisateur.get());
         } else {
-            throw new RuntimeException("Utilisateur introuvable avec l'ID : " + idUtilisateur);
+            throw new RuntimeException("Utilisateur introuvable avec le nom d'utilisateur : " + nomUtilisateur);
         }
     }
+
 
     // Méthodes utilitaires pour conversion entre Utilisateur et UtilisateurDTO
     private Utilisateur convertirDtoEnUtilisateur(UtilisateurDTO dto) {
@@ -116,7 +118,7 @@ public class UtilisateurService {
         dto.setAdresse(utilisateur.getAdresse());
         dto.setTelephone(utilisateur.getTelephone());
         dto.setRole(utilisateur.getRole());
-        dto.setMotDePasse(null); // Ne pas inclure le mot de passe dans le DTO pour des raisons de sécurité
+        dto.setMotDePasse(utilisateur.getMotDePasse()); // Ne pas inclure le mot de passe dans le DTO pour des raisons de sécurité
         return dto;
     }
 }

@@ -43,10 +43,10 @@ public class UtilisateurController {
         return ResponseEntity.ok(utilisateurs);
     }
 
-    // Obtenir un utilisateur par son ID
-    @GetMapping("/{id}")
-    public ResponseEntity<UtilisateurDTO> obtenirUtilisateurParId(@PathVariable int id) {
-        Optional<UtilisateurDTO> utilisateur = utilisateurService.trouverParNomUtilisateur(String.valueOf(id));
+    // Obtenir un utilisateur par son nom
+    @GetMapping("/{nomUtilisateur}")
+    public ResponseEntity<UtilisateurDTO> obtenirUtilisateurParNom(@PathVariable String nomUtilisateur) {
+        Optional<UtilisateurDTO> utilisateur = utilisateurService.trouverParNomUtilisateur(nomUtilisateur);
         return utilisateur.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(404).body(null));
     }
@@ -69,14 +69,15 @@ public class UtilisateurController {
         }
     }
 
-    // Supprimer un utilisateur
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> supprimerUtilisateur(@PathVariable int id) {
+// Supprimer un utilisateur par nom d'utilisateur
+    @DeleteMapping("/{nomUtilisateur}")
+    public ResponseEntity<String> supprimerUtilisateurParNom(@PathVariable String nomUtilisateur) {
         try {
-            utilisateurService.supprimerUtilisateur(id);
+            utilisateurService.supprimerUtilisateurParNom(nomUtilisateur);
             return ResponseEntity.ok("Utilisateur supprimé avec succès");
         } catch (RuntimeException e) {
             return ResponseEntity.status(404).body(e.getMessage());
         }
     }
+
 }
