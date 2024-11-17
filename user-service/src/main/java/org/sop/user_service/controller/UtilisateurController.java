@@ -1,5 +1,6 @@
 package org.sop.user_service.controller;
 
+import org.sop.user_service.Utils.TokenBlacklist;
 import org.sop.user_service.DTO.ConnexionRequest;
 import org.sop.user_service.DTO.UtilisateurDTO;
 import org.sop.user_service.Utils.JwtUtil;
@@ -36,6 +37,14 @@ public class UtilisateurController {
             return ResponseEntity.status(401).body("Nom d'utilisateur ou mot de passe incorrect");
         }
     }
+    @PostMapping("/deconnexion")
+    public ResponseEntity<String> deconnexion(@RequestHeader("Authorization") String authHeader) {
+        String token = authHeader.substring(7);  // Enlever "Bearer " du début du token
+        TokenBlacklist.addToken(token);    // Ajouter à la liste noire
+        return ResponseEntity.ok("Déconnexion réussie");
+    }
+
+
 
 
 
