@@ -59,10 +59,10 @@ public class UtilisateurController {
     }
 
     // Modifier un utilisateur
-    @PutMapping("/{id}")
-    public ResponseEntity<UtilisateurDTO> modifierUtilisateur(@PathVariable int id, @RequestBody UtilisateurDTO utilisateurDTO) {
+    @PutMapping("/{nomUtilisateur}")
+    public ResponseEntity<UtilisateurDTO> modifierUtilisateur(@PathVariable String nomUtilisateur, @RequestBody UtilisateurDTO utilisateurDTO) {
         try {
-            UtilisateurDTO utilisateurMisAJour = utilisateurService.modifierUtilisateur(id, utilisateurDTO);
+            UtilisateurDTO utilisateurMisAJour = utilisateurService.modifierUtilisateur(nomUtilisateur, utilisateurDTO);
             return ResponseEntity.ok(utilisateurMisAJour);
         } catch (RuntimeException e) {
             return ResponseEntity.status(404).body(null);

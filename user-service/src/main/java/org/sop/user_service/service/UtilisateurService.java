@@ -45,9 +45,9 @@ public class UtilisateurService {
         return convertirUtilisateurEnDto(utilisateurAjoute);
     }
 
-    // Modifier les informations d'un utilisateur
-    public UtilisateurDTO modifierUtilisateur(int idUtilisateur, UtilisateurDTO utilisateurDTO) {
-        Optional<Utilisateur> utilisateurExistant = utilisateurRepository.findById(idUtilisateur);
+    // Modifier les informations d'un utilisateur par nom d'utilisateur
+    public UtilisateurDTO modifierUtilisateur(String nomUtilisateur, UtilisateurDTO utilisateurDTO) {
+        Optional<Utilisateur> utilisateurExistant = utilisateurRepository.findByNomUtilisateur(nomUtilisateur);
         if (utilisateurExistant.isPresent()) {
             Utilisateur utilisateur = utilisateurExistant.get();
             utilisateur.setCin(utilisateurDTO.getCin());
@@ -62,7 +62,7 @@ public class UtilisateurService {
             Utilisateur utilisateurMisAJour = utilisateurRepository.save(utilisateur);
             return convertirUtilisateurEnDto(utilisateurMisAJour);
         } else {
-            throw new RuntimeException("Utilisateur introuvable avec l'ID : " + idUtilisateur);
+            throw new RuntimeException("Utilisateur introuvable avec le nom d'utilisateur : " + nomUtilisateur);
         }
     }
 
