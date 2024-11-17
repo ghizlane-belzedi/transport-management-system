@@ -1,55 +1,27 @@
-/*package org.sop.user_service.Utils;
+package org.sop.user_service.Utils;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
-    private static final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256); // Génère une clé secrète pour signer le token
+    @Value("${jwt.secret}")
+    private String secret; // Injection de la clé depuis application.properties
 
-    // Durée de validité du token (ex : 10 minutes)
-    private static final long EXPIRATION_TIME = 10 * 60 * 1000; // 10 minutes en millisecondes
-
-    // Méthode pour générer un JWT
-    public static String generateToken(String userId) {
+    public String generateToken(String username) {
+        if (secret == null || secret.isEmpty()) {
+            throw new IllegalArgumentException("Secret key cannot be null or empty");
+        }
         return Jwts.builder()
-                .setSubject(userId) // Le "subject" est l'identifiant de l'utilisateur
-                .setIssuedAt(new Date()) // Date de création du token
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // Date d'expiration
-                .signWith(secretKey) // Signer avec la clé secrète
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 heures
+                .signWith(SignatureAlgorithm.HS256, secret) // Utilise la clé injectée
                 .compact();
     }
-
-    // Méthode pour extraire le nom d'utilisateur à partir du token
-    public String extractUsername(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(secretKey)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
-    }
-
-    // Méthode pour valider le token en vérifiant le nom d'utilisateur et la date d'expiration
-    public Boolean isTokenValid(String token, String username) {
-        String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && !isTokenExpired(token));
-    }
-
-    // Méthode pour vérifier si le token est expiré
-    private Boolean isTokenExpired(String token) {
-        Date expirationDate = Jwts.parserBuilder()
-                .setSigningKey(secretKey)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getExpiration();
-        return expirationDate.before(new Date());
-    }
 }
-*/

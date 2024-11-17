@@ -1,6 +1,8 @@
 package org.sop.user_service.controller;
 
+import org.sop.user_service.DTO.ConnexionRequest;
 import org.sop.user_service.DTO.UtilisateurDTO;
+import org.sop.user_service.Utils.JwtUtil;
 import org.sop.user_service.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/utilisateurs")
 public class UtilisateurController {
-
+    @Autowired
+    private JwtUtil jwtUtil;
     @Autowired
     private UtilisateurService utilisateurService;
 
@@ -23,18 +26,18 @@ public class UtilisateurController {
         return ResponseEntity.ok(utilisateurCree);
     }
 
-    // Connexion d'un utilisateur
     @PostMapping("/connexion")
-    public ResponseEntity<String> connexion(@RequestParam String nomUtilisateur, @RequestParam String motDePasse) {
-        Optional<UtilisateurDTO> utilisateur = utilisateurService.connexion(nomUtilisateur, motDePasse);
+    public ResponseEntity<String> connexion(@RequestBody ConnexionRequest request) {
+        Optional<UtilisateurDTO> utilisateur = utilisateurService.connexion(request.getNomUtilisateur(), request.getMotDePasse());
         if (utilisateur.isPresent()) {
-            // Générer un token JWT ici et le retourner
-            String token = "token_placeholder"; // Remplacer par un vrai générateur de JWT
+            String token = jwtUtil.generateToken(request.getNomUtilisateur()); // Utilisation de l'instance injectée
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(401).body("Nom d'utilisateur ou mot de passe incorrect");
         }
     }
+
+
 
     // Obtenir tous les utilisateurs
     @GetMapping

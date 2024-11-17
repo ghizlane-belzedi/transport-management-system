@@ -30,12 +30,17 @@ public class UtilisateurService {
 
     // Connexion utilisateur
     public Optional<UtilisateurDTO> connexion(String nomUtilisateur, String motDePasse) {
-        Optional<Utilisateur> utilisateur = utilisateurRepository.findByNomUtilisateur(nomUtilisateur);
-        if (utilisateur.isPresent() && passwordEncoder.matches(motDePasse, utilisateur.get().getMotDePasse())) {
-            return Optional.of(convertirUtilisateurEnDto(utilisateur.get()));
+        Optional<Utilisateur> utilisateurExistant = utilisateurRepository.findByNomUtilisateur(nomUtilisateur);
+        if (utilisateurExistant.isPresent()) {
+            Utilisateur utilisateur = utilisateurExistant.get();
+            // Vérification du mot de passe
+            if (passwordEncoder.matches(motDePasse, utilisateur.getMotDePasse())) {
+                return Optional.of(convertirUtilisateurEnDto(utilisateur));
+            }
         }
-        return Optional.empty();
+        return Optional.empty(); // Retourne vide si les identifiants sont incorrects
     }
+
 
     // Ajouter un utilisateur
     public UtilisateurDTO ajouterUtilisateur(UtilisateurDTO utilisateurDTO) {
