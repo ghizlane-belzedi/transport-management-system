@@ -37,11 +37,12 @@ public class UtilisateurController {
         Optional<UtilisateurDTO> utilisateur = utilisateurService.connexion(request.getNomUtilisateur(), request.getMotDePasse());
         if (utilisateur.isPresent()) {
             String token = jwtUtil.generateToken(request.getNomUtilisateur());
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(token); // Assurez-vous que le token est une chaîne valide.
         } else {
             return ResponseEntity.status(401).body("Nom d'utilisateur ou mot de passe incorrect");
         }
     }
+
 
     // Déconnexion de l'utilisateur
     @PostMapping("/deconnexion")

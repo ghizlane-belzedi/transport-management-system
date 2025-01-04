@@ -1,0 +1,110 @@
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0 text-center" style="z-index: 10">
+        <!-- svg -->
+        <img src="./assets/loginn.png" width="70%" height="70%" />
+        <h1 class="my-5 mdisplay-5 fw-bold ls-tight" style="color: #080163">
+          Bienvenue sur notre plateforme de gestion de transport urbain
+        </h1>
+        <p class="mb-4 opacity-70" style="color: rgb(0, 38, 56)">
+          La plateforme de gestion de transport urbain est un outil web destiné
+          aux usagers et aux gestionnaires de transport pour faciliter la
+          planification, le suivi et l'optimisation des déplacements en ville.
+          Vous pouvez consulter vos itinéraires, gérer vos abonnements et
+          accéder à des informations en temps réel.
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div
+          id="radius-shape-1"
+          class="position-absolute rounded-circle shadow-5-strong"
+        ></div>
+        <div
+          id="radius-shape-2"
+          class="position-absolute shadow-5-strong"
+        ></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <div class="text-center">
+              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
+                Log in
+              </h3>
+            </div>
+            <form [formGroup]="userFormGroup" (ngSubmit)="handleLogin()">
+              <div class="mb-3">
+                <label class="form-label">Nom d'utilisateur</label>
+                <input
+                  type="text"
+                  formControlName="username"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Mot de passe</label>
+                <input
+                  type="password"
+                  formControlName="password"
+                  class="form-control"
+                />
+              </div>
+              <button class="btn btn-primary" type="submit">
+                Se connecter
+              </button>
+              <div class="text-danger" *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+              <br />
+              <hr />
+              <!-- Checkbox -->
+              <input
+                class="form-check-input me-2"
+                type="checkbox"
+                value=""
+                id="form2Example33"
+                checked
+              />
+              <label class="form-check-label" for="form2Example33">
+                S'abonner à notre newsletter
+              </label>
+              <br /><br />
+              <p>
+                Vous n'avez pas de compte ?
+                <a routerLink="/register" class="link-info my-3"
+                  >Inscrivez-vous ici</a
+                >
+              </p>
+              <p>
+                Mot de passe oublié ?
+                <a routerLink="/forgotPassword" class="link-info my-3"
+                  >Récupérez-le ici</a
+                >
+              </p>
+              <div class="text-center">
+                <p>Ou connectez-vous avec :</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-link btn-floating mx-1"
+                ></button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
