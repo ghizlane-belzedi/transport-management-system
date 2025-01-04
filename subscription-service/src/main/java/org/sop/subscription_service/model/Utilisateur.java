@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.sop.user_service.model.Role;  // Importer l'énumération Role
 
 @Entity
 @Table(name = "Utilisateur")
@@ -34,9 +35,9 @@ public class Utilisateur {
     @Column(length = 15)
     private String telephone;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)  // Utilisation de l'énumération Role
     @Column(nullable = false)
-    private RoleUser roleUser;
+    private Role role;  // Remplacer RoleUser par Role
 
     // Getters et Setters
     public Integer getIdUtilisateur() {
@@ -95,11 +96,11 @@ public class Utilisateur {
         this.telephone = telephone;
     }
 
-    public RoleUser getRoleUser() {
-        return roleUser;
+    public Role getRole() {
+        return role;  // Getter pour Role
     }
 
-    public void setRoleUser(RoleUser roleUser) {
-        this.roleUser = roleUser;
+    public void setRole(Role role) {
+        this.role = role;  // Setter pour Role
     }
 }

@@ -3,7 +3,10 @@ package org.sop.ticket_service.service;
 import org.sop.ticket_service.dto.TicketDTO;
 import org.sop.ticket_service.model.Ticket;
 import org.sop.ticket_service.repository.TicketRepository;
+import org.sop.user_service.DTO.UtilisateurDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,9 +15,13 @@ import java.util.stream.Collectors;
 public class TicketService {
 
     private final TicketRepository ticketRepository;
+    private final RestTemplate restTemplate;
 
-    public TicketService(TicketRepository ticketRepository) {
+    public TicketService(TicketRepository ticketRepository, RestTemplate restTemplate) {
+
         this.ticketRepository = ticketRepository;
+        this.restTemplate = restTemplate;
+
     }
 
     public TicketDTO createTicket(TicketDTO ticketDTO) {

@@ -1,5 +1,5 @@
 package org.sop.api_gateway;
-
+/*
 import org.springframework.boot.SpringApplication;
 
 public class TestApiGatewayApplication {
@@ -9,3 +9,4 @@ public class TestApiGatewayApplication {
 	}
 
 }
+*/

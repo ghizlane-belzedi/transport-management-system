@@ -1,6 +1,5 @@
 package org.sop.timetable_service.controleur;
 
-
 import org.sop.timetable_service.Model.Horaire;
 import org.sop.timetable_service.services.HoraireService;
 import org.springframework.beans.factory.annotation.Autowired;

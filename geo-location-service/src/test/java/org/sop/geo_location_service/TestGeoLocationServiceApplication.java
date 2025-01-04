@@ -1,5 +1,5 @@
 package org.sop.geo_location_service;
-
+/*
 import org.springframework.boot.SpringApplication;
 
 public class TestGeoLocationServiceApplication {
@@ -9,3 +9,4 @@ public class TestGeoLocationServiceApplication {
 	}
 
 }
+*/

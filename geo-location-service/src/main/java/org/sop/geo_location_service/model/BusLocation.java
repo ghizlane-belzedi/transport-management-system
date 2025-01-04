@@ -14,4 +14,24 @@ public class BusLocation {
     private double latitude; // Latitude
     private double longitude; // Longitude
     private LocalDateTime timestamp; // Date et heure de la localisation
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setBusId(String busId) {
+        this.busId = busId;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
 }

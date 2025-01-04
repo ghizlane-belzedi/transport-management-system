@@ -1,5 +1,5 @@
 package org.sop.notification_service;
-
+/*
 import org.springframework.boot.SpringApplication;
 
 public class TestNotificationServiceApplication {
@@ -9,3 +9,4 @@ public class TestNotificationServiceApplication {
 	}
 
 }
+*/

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.sop.subscription_service.dto.UtilisateurDTO;
 import org.sop.subscription_service.repository.UtilisateurRepository;
+import org.sop.user_service.model.Role;  // Importer l'énumération Role
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,8 @@ public class UtilisateurService {
             dto.setIdUtilisateur(utilisateur.getIdUtilisateur());
             dto.setNomUtilisateur(utilisateur.getNomUtilisateur());
             dto.setEmail(utilisateur.getEmail());
-            dto.setRoleUser(utilisateur.getRoleUser().name());
+            dto.setRole(utilisateur.getRole().name());  // Convertir Role en chaîne
             return dto;
         }).collect(Collectors.toList());
     }
 }
-

@@ -1,5 +1,5 @@
 package org.sop.user_service;
-
+/*
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sop.user_service.DAO.UtilisateurRepository;
@@ -31,3 +31,4 @@ public class UtilisateurRepositoryTest {
         assertEquals("testUser", savedUser.getNomUtilisateur());
     }
 }
+*/

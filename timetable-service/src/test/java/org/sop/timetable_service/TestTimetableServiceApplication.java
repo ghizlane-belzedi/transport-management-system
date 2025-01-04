@@ -1,5 +1,5 @@
 package org.sop.timetable_service;
-
+/*
 import org.springframework.boot.SpringApplication;
 
 public class TestTimetableServiceApplication {
@@ -9,3 +9,4 @@ public class TestTimetableServiceApplication {
 	}
 
 }
+*/

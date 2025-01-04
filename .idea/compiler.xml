@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/commande-service/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/commandes-service/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -11,20 +15,27 @@
         <module name="subscription-service" />
         <module name="geo-location-service" />
         <module name="api-gateway" />
+        <module name="commandes-service" />
         <module name="user-service" />
         <module name="notification-service" />
         <module name="ticket-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="commande-service" target="17" />
+      <module name="controller" target="17" />
       <module name="frontend" target="17" />
+      <module name="subscription" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
+      <module name="commande-service" options="-parameters" />
+      <module name="commandes-service" options="-parameters" />
       <module name="geo-location-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
+      <module name="subscription" options="-parameters" />
       <module name="subscription-service" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
       <module name="timetable-service" options="-parameters" />

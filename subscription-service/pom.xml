@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.sop</groupId>
-	<artifactId>subscription-service</artifactId>
+	<artifactId>subscription</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>subscription-service</name>
 	<description>subscription-service</description>
@@ -107,6 +107,11 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
 			</plugin>
 		</plugins>
 	</build>

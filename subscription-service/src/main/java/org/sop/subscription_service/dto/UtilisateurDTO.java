@@ -1,12 +1,13 @@
 package org.sop.subscription_service.dto;
 
+import org.sop.user_service.model.Role;  // Importer l'énumération Role
 
 public class UtilisateurDTO {
-    
+
     private Integer idUtilisateur;
     private String nomUtilisateur;
     private String email;
-    private String roleUser;
+    private String role;
 
     // Getters et Setters
     public Integer getIdUtilisateur() {
@@ -33,11 +34,11 @@ public class UtilisateurDTO {
         this.email = email;
     }
 
-    public String getRoleUser() {
-        return roleUser;
+    public String getRole() {
+        return role;  // Retourner le rôle sous forme de chaîne
     }
 
-    public void setRoleUser(String roleUser) {
-        this.roleUser = roleUser;
+    public void setRole(String role) {
+        this.role = role;  // Accepter le rôle sous forme de chaîne
     }
 }

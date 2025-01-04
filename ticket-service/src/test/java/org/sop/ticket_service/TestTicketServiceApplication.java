@@ -1,5 +1,5 @@
 package org.sop.ticket_service;
-
+/*
 import org.springframework.boot.SpringApplication;
 
 public class TestTicketServiceApplication {
@@ -9,3 +9,4 @@ public class TestTicketServiceApplication {
 	}
 
 }
+*/

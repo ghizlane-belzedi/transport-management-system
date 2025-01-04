@@ -1,11 +1,14 @@
 package org.sop.user_service.service;
 
+//import org.sop.subscription_service.model.Abonnement;
 import org.sop.user_service.DAO.UtilisateurRepository;
+import org.sop.user_service.DTO.SouscriptionRequest;
 import org.sop.user_service.DTO.UtilisateurDTO;
 import org.sop.user_service.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +19,11 @@ public class UtilisateurService {
 
     @Autowired
     private UtilisateurRepository utilisateurRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    private final String subscriptionServiceUrl = "http://localhost:8085/api/abonnements";  // URL de votre microservice subscription
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -49,7 +57,9 @@ public class UtilisateurService {
         Utilisateur utilisateurAjoute = utilisateurRepository.save(utilisateur);
         return convertirUtilisateurEnDto(utilisateurAjoute);
     }
-
+    public Utilisateur getUtilisateurById(int id) {
+        return utilisateurRepository.findById(id).orElse(null);
+    }
     // Modifier les informations d'un utilisateur par nom d'utilisateur
     public UtilisateurDTO modifierUtilisateur(String nomUtilisateur, UtilisateurDTO utilisateurDTO) {
         Optional<Utilisateur> utilisateurExistant = utilisateurRepository.findByNomUtilisateur(nomUtilisateur);
@@ -100,8 +110,32 @@ public class UtilisateurService {
             throw new RuntimeException("Utilisateur introuvable avec le nom d'utilisateur : " + nomUtilisateur);
         }
     }
+    /*
+    public Abonnement souscrireAbonnement(Utilisateur utilisateur, String planAbonnement) {
+        // Construire le payload pour la souscription
+        String url = subscriptionServiceUrl + "/souscrire";  // URL du microservice subscription
 
+        // Créez l'objet que vous enverrez (par exemple, un objet représentant la souscription)
+        // Il peut s'agir d'un DTO
+        SouscriptionRequest request = new SouscriptionRequest(utilisateur.getIdUtilisateur(), planAbonnement);
 
+        // Appel du microservice subscription pour effectuer la souscription
+        Abonnement abonnement = restTemplate.postForObject(url, request, Abonnement.class);
+
+        return abonnement;  // Retourne l'abonnement souscrit
+    }
+    // Méthode pour annuler un abonnement
+    public boolean annulerAbonnement(Utilisateur utilisateur, String idAbonnement) {
+        // URL du microservice subscription pour annuler l'abonnement
+        String url = subscriptionServiceUrl + "/annuler/" + idAbonnement;
+
+        // Appel pour annuler l'abonnement
+        restTemplate.delete(url);
+
+        return true;  // Retourne true si l'annulation a réussi
+    }
+
+*/
     // Méthodes utilitaires pour conversion entre Utilisateur et UtilisateurDTO
     private Utilisateur convertirDtoEnUtilisateur(UtilisateurDTO dto) {
         Utilisateur utilisateur = new Utilisateur();

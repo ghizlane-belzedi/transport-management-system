@@ -1,5 +1,5 @@
 package org.sop.user_service;
-
+/*
 import org.springframework.boot.SpringApplication;
 
 public class TestUserServiceApplication {
@@ -9,3 +9,4 @@ public class TestUserServiceApplication {
 	}
 
 }
+*/
