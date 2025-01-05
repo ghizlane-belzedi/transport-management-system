@@ -96,46 +96,44 @@
     </section><!-- End About Us Section -->
 
 
-    
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-title">
-            <h2>Profession</h2>
-            <p>Choisir Votre Espace.</p>
-          </div>
-  
-          <div class="row">
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="400">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-person-fill"></i></div>
-                <h4><a routerLink="/login" class="link-info my-3">Utilisateurs</a></h4>
-                <p>Naviger dans votre Espace</p>
-              </div>
-              
-            </div>
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="400">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-person-fill"></i></div>
-                <h4><a routerLink="/login" class="link-info my-3">Conducteurs</a></h4>
-                <p>Naviger dans votre Espace</p>
-              </div>
-              
-            </div>
-  
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-              <div class="icon-box">
-                <div class="icon"><i class="bx b4x-layer"></i></div>
-                <h4><a href="">Administrateur</a></h4>
-                <p>Naviger dans votre Espace</p>
-              </div>
-            </div>
-  
-          </div>
-  
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Profession</h2>
+      <p>Choisir Votre Espace.</p>
+    </div>
+
+    <div class="row">
+      <!-- Utilisateurs Button -->
+      <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-box">
+          <div class="icon"><i class="bi bi-person-fill"></i></div>
+          <h4><a [routerLink]="['/login']" [queryParams]="{ role: 'USER' }" class="link-info my-3">Utilisateurs</a></h4>
+          <p>Naviger dans votre Espace</p>
         </div>
-      </section><!-- End Services Section -->
+      </div>
+
+      <!-- Conducteurs Button -->
+      <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-box">
+          <div class="icon"><i class="bi bi-person-fill"></i></div>
+          <h4><a [routerLink]="['/login']" [queryParams]="{ role: 'DRIVER' }" class="link-info my-3">Conducteurs</a></h4>
+          <p>Naviger dans votre Espace</p>
+        </div>
+      </div>
+
+      <!-- Administrateur Button -->
+      <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-box">
+          <div class="icon"><i class="bx b4x-layer"></i></div>
+          <h4><a [routerLink]="['/login']" [queryParams]="{ role: 'ADMIN' }">Administrateur</a></h4>
+          <p>Naviger dans votre Espace</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Services Section -->
 
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">

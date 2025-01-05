@@ -1,0 +1,108 @@
+<section class="admin-dashboard">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Column for the Animated Image -->
+        <div class="col-12 text-center mb-5">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="Admin Dashboard Illustration" width="50%">
+        </div>
+  
+        <!-- Column for the Admin Content -->
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-4" style="color: #080163;">Ajouter un Trajet</h1>
+          <p class="lead mb-5" style="color: rgb(0,38,56);">
+            Remplissez les détails du trajet pour l'ajouter à la base de données.
+          </p>
+  
+          <!-- Formulaire pour Ajouter un Trajet -->
+          <div class="card bg-light rounded-3 shadow p-4">
+            <form class="w-75 m-auto" [formGroup]="trajetForm" (ngSubmit)="submit()">
+              <!-- Depart Field -->
+              <div class="mb-4">
+                <label for="depart" class="form-label fw-bold">Départ</label>
+                <input
+                  formControlName="depart"
+                  type="text"
+                  id="depart"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le lieu de départ"
+                />
+                <div *ngIf="controls['depart'].touched && controls['depart'].invalid" class="text-danger mt-2">
+                  <span *ngIf="controls['depart'].errors?.['required']">Le départ est requis.</span>
+                  <span *ngIf="controls['depart'].errors?.['minlength']">Le départ doit contenir au moins 3 caractères.</span>
+                  <span *ngIf="controls['depart'].errors?.['maxlength']">Le départ ne peut pas dépasser 30 caractères.</span>
+                </div>
+              </div>
+  
+              <!-- Arrivee Field -->
+              <div class="mb-4">
+                <label for="arrivee" class="form-label fw-bold">Arrivée</label>
+                <input
+                  formControlName="arrivee"
+                  type="text"
+                  id="arrivee"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le lieu d'arrivée"
+                />
+                <div *ngIf="controls['arrivee'].touched && controls['arrivee'].invalid" class="text-danger mt-2">
+                  <span *ngIf="controls['arrivee'].errors?.['required']">L'arrivée est requise.</span>
+                  <span *ngIf="controls['arrivee'].errors?.['minlength']">L'arrivée doit contenir au moins 3 caractères.</span>
+                  <span *ngIf="controls['arrivee'].errors?.['maxlength']">L'arrivée ne peut pas dépasser 30 caractères.</span>
+                </div>
+              </div>
+  
+              <!-- Duree Field -->
+              <div class="mb-4">
+                <label for="duree" class="form-label fw-bold">Durée (en heures)</label>
+                <input
+                  formControlName="duree"
+                  type="number"
+                  id="duree"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez la durée du trajet"
+                />
+                <div *ngIf="controls['duree'].touched && controls['duree'].invalid" class="text-danger mt-2">
+                  <span *ngIf="controls['duree'].errors?.['required']">La durée est requise.</span>
+                  <span *ngIf="controls['duree'].errors?.['min']">La durée doit être d'au moins 1 heure.</span>
+                </div>
+              </div>
+  
+              <!-- Distance Field -->
+              <div class="mb-4">
+                <label for="distance" class="form-label fw-bold">Distance (en km)</label>
+                <input
+                  formControlName="distance"
+                  type="number"
+                  id="distance"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez la distance du trajet"
+                />
+                <div *ngIf="controls['distance'].touched && controls['distance'].invalid" class="text-danger mt-2">
+                  <span *ngIf="controls['distance'].errors?.['required']">La distance est requise.</span>
+                  <span *ngIf="controls['distance'].errors?.['min']">La distance doit être d'au moins 1 km.</span>
+                </div>
+              </div>
+  
+              <!-- Horaires Field (Optional) -->
+              <div class="mb-4">
+                <label for="horaires" class="form-label fw-bold">Horaires (Optionnel)</label>
+                <input
+                  formControlName="horaires"
+                  type="text"
+                  id="horaires"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez les horaires du trajet"
+                />
+              </div>
+  
+              <!-- Submit Button -->
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -11,55 +11,44 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginComponent implements OnInit {
   userFormGroup!: FormGroup;
   errorMessage!: string;
+  role!: string; // Role parameter from the query string
 
-  email : string = '';
-  password : string = '';
-
-  constructor(private formBuilder: FormBuilder,
-              private authenticationService: AuthenticationService,
-              private router: Router) {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    // Get the role from the query parameters
+    this.route.queryParams.subscribe(params => {
+      this.role = params['role'];
+    });
+
     this.userFormGroup = this.formBuilder.group({
       username: this.formBuilder.control(""),
       password: this.formBuilder.control("")
-    })
+    });
   }
 
   handleLogin() {
     let username = this.userFormGroup.value.username;
     let password = this.userFormGroup.value.password;
-    this.authenticationService.login(username, password).subscribe({
+    this.authService.login(username, password).subscribe({
       next: (appUser) => {
-        this.authenticationService.authenticateUser(appUser).subscribe({
+        this.authService.authenticateUser(appUser).subscribe({
           next: (data) => {
-            this.router.navigateByUrl("/home");
-          }
-        });
-      },
-      error: (err) => {
-        this.errorMessage = err;
-      }
-    })
-  }
-
-  OnUserLogin() {
-    if (this.email === '') {
-      alert('Veuillez entrer votre email.');
-      return;
-    }
-  
-    if (this.password === '') {
-      alert('Veuillez entrer votre mot de passe.');
-      return;
-    }
-  
-    this.authenticationService.login(this.email, this.password).subscribe({
-      next: (appUser) => {
-        this.authenticationService.authenticateUser(appUser).subscribe({
-          next: (data) => {
-            this.router.navigateByUrl("/home"); // Redirect to the home page
+            // Redirect based on the role parameter
+            if (this.role === 'USER') {
+              this.router.navigateByUrl("/app-user");
+            } else if (this.role === 'DRIVER') {
+              this.router.navigateByUrl("/app-driver");
+            } else if (this.role === 'ADMIN') {
+              this.router.navigateByUrl("/app-admin");
+            } else {
+              this.errorMessage = 'Rôle non reconnu. Veuillez contacter l\'administrateur.';
+            }
           },
           error: (err) => {
             this.errorMessage = 'Erreur lors de l\'authentification. Veuillez réessayer.';
@@ -67,14 +56,11 @@ export class LoginComponent implements OnInit {
         });
       },
       error: (err) => {
-        this.errorMessage = 'Email ou mot de passe incorrect.';
+        this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect.';
       }
     });
-  
-    this.email = '';
-    this.password = '';
   }
   OnSignInWithGoogle(){
-    this.authenticationService.googleSignIn();
+    this.authService.googleSignIn();
   }
 }

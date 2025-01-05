@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppUserComponent } from './app-user/app-user.component';
-import { TicketComponent } from './app-user/ticket/ticket.component';
-import { TrajetComponent } from './app-user/trajet/trajet.component';
-import { SuiviComponent } from './app-user/suivi/suivi.component';
+
+import { AppAdminComponent } from './app-admin/app-admin.component';
+import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
+import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,15 +19,16 @@ import { SuiviComponent } from './app-user/suivi/suivi.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AppUserComponent,
-    TicketComponent,
-    TrajetComponent,
-    SuiviComponent,
+    AppAdminComponent,
+    AddTrajetComponent,
+    AbonnementFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
