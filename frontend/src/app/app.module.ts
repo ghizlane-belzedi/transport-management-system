@@ -12,6 +12,9 @@ import { AppAdminComponent } from './app-admin/app-admin.component';
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
 import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TicketComponent } from './app-user/ticket/ticket.component';
+import { BusLocationComponent } from './app-user/bus-location/bus-location.component';
+import { TrajetComponent } from './app-user/trajet/trajet.component';
 
 
 @NgModule({
@@ -22,6 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppAdminComponent,
     AddTrajetComponent,
     AbonnementFormComponent,
+    AppUserComponent,
+    TicketComponent,
+    BusLocationComponent,
+    TrajetComponent
   ],
   imports: [
     BrowserModule,

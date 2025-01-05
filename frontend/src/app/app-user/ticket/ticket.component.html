@@ -1,1 +1,61 @@
-<p>ticket works!</p>
+<section class="user-dashboard">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Column for the Animated Image -->
+        <div class="col-12 text-center mb-5">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="User Dashboard Illustration" width="50%">
+        </div>
+  
+        <!-- Column for the User Content -->
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-4" style="color: #080163;">Acheter un Ticket</h1>
+          <p class="lead mb-5" style="color: rgb(0,38,56);">
+            Achetez un ticket pour votre trajet en quelques clics.
+          </p>
+  
+          <!-- Formulaire pour Acheter un Ticket -->
+          <div class="card bg-light rounded-3 shadow p-4">
+            <form class="w-75 m-auto" [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+              <!-- Champ Trajet ID -->
+              <div class="mb-4">
+                <label for="trajetId" class="form-label fw-bold">ID du Trajet</label>
+                <input
+                  formControlName="trajetId"
+                  type="text"
+                  id="trajetId"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez l'ID du trajet"
+                />
+                <div *ngIf="ticketForm.get('trajetId')?.touched && ticketForm.get('trajetId')?.invalid" class="text-danger mt-2">
+                  <span *ngIf="ticketForm.get('trajetId')?.errors?.['required']">L'ID du trajet est requis.</span>
+                </div>
+              </div>
+  
+              <!-- Champ Montant -->
+              <div class="mb-4">
+                <label for="montant" class="form-label fw-bold">Montant</label>
+                <input
+                  formControlName="montant"
+                  type="number"
+                  id="montant"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le montant"
+                />
+                <div *ngIf="ticketForm.get('montant')?.touched && ticketForm.get('montant')?.invalid" class="text-danger mt-2">
+                  <span *ngIf="ticketForm.get('montant')?.errors?.['required']">Le montant est requis.</span>
+                  <span *ngIf="ticketForm.get('montant')?.errors?.['min']">Le montant doit être supérieur à 0.</span>
+                </div>
+              </div>
+  
+              <!-- Bouton Soumettre -->
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="ticketForm.invalid">
+                  Acheter le Ticket
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
