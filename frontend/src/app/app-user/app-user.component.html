@@ -1,124 +1,69 @@
-
- <!-- ======= Header ======= -->
- <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.html">Transport</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" routerLink="/hero">Home</a></li>
-          <li><a class="nav-link scrollto" routerLink="/about">About</a></li>
-          <li><a class="nav-link scrollto" routerLink="/mservices">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-
+<section class="user-dashboard">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Votre plateforme de gestion de Transport</h1>
-          <h2>Your transport management platform</h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-          </div>
+      <div class="row justify-content-center">
+        <!-- Column for the Animated Image -->
+        <div class="col-12 text-center mb-5">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="User Dashboard Illustration" width="50%">
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+  
+        <!-- Column for the User Content -->
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-4" style="color: #080163;">Tableau de Bord Utilisateur</h1>
+          <p class="lead mb-5" style="color: rgb(0,38,56);">
+            Bienvenue sur votre tableau de bord. Achetez des tickets, consultez les trajets et suivez les bus en temps réel.
+          </p>
+  
+          <!-- Cards for User Actions -->
+          <div class="row justify-content-center">
+            <!-- Card for Buying Tickets -->
+            <div class="col-md-4 mb-4">
+              <div class="card user-card h-100">
+                <div class="card-body text-center d-flex flex-column">
+                  <i class="fas fa-ticket-alt fa-3x mb-3" style="color: #080163;"></i>
+                  <h3 class="card-title h5">Acheter un Ticket</h3>
+                  <p class="card-text flex-grow-1 small">
+                    Achetez un ticket pour votre trajet en quelques clics.
+                  </p>
+                  <button class="btn btn-primary btn-lg w-100" routerLink="/acheter-ticket">
+                    Acheter un Ticket
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Card for Viewing Trajets -->
+            <div class="col-md-4 mb-4">
+              <div class="card user-card h-100">
+                <div class="card-body text-center d-flex flex-column">
+                  <i class="fas fa-route fa-3x mb-3" style="color: #080163;"></i>
+                  <h3 class="card-title h5">Voir les Trajets</h3>
+                  <p class="card-text flex-grow-1 small">
+                    Consultez les trajets disponibles et planifiez votre voyage.
+                  </p>
+                  <button class="btn btn-primary btn-lg w-100" routerLink="/trajets">
+                    Voir les Trajets
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Card for Real-Time Bus Tracking -->
+            <div class="col-md-4 mb-4">
+              <div class="card user-card h-100">
+                <div class="card-body text-center d-flex flex-column">
+                  <i class="fas fa-bus fa-3x mb-3" style="color: #080163;"></i>
+                  <h3 class="card-title h5">Suivre le Bus en Temps Réel</h3>
+                  <p class="card-text flex-grow-1 small">
+                    Suivez votre bus en temps réel pour ne jamais le manquer.
+                  </p>
+                  <button class="btn btn-primary btn-lg w-100" routerLink="/suivre-bus">
+                    Suivre le Bus
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-
-
-    
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-title">
-            <h2>What next?</h2>
-            <p>Choisir Votre Espace.</p>
-          </div>
-  
-          <div class="row">
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="400">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-person-fill"></i></div>
-                <h4><a routerLink="/achat" class="link-info my-3">Acheter votre ticket </a></h4>
-                <p>acheter votre ticket</p>
-              </div>
-              
-            </div>
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="400">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-person-fill"></i></div>
-                <h4><a routerLink="/geoloca" class="link-info my-3">Suivre votre Bus</a></h4>
-                <p>suivre votre bus en  temps reel </p>
-              </div>
-              
-            </div>
-  
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-              <div class="icon-box">
-                <div class="icon"><i class="bx b4x-layer"></i></div>
-                <h4><a href="/trajet">Consulter les Trajets</a></h4>
-                <p>consulter les trajets et les horraires disponible </p>
-              </div>
-            </div>
-  
-          </div>
-  
-        </div>
-      </section><!-- End Services Section -->
-
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-start">
-            <h3>Call To Action</h3>
-            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Call To Action</a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-   
+  </section>

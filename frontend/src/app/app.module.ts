@@ -1,34 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http'; // Importation de HttpClientModule
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AppUserComponent } from './app-user/app-user.component';
-import { SuiviComponent } from './app-user/suivi/suivi.component';
-import { TicketComponent } from './app-user/ticket/ticket.component';
-import { TrajetComponent } from './app-user/trajet/trajet.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppUserComponent } from './app-user/app-user.component';
+
+import { AppAdminComponent } from './app-admin/app-admin.component';
+import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
+import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AppUserComponent,
-    TicketComponent,
-    TrajetComponent,
-    SuiviComponent,
+    AppAdminComponent,
+    AddTrajetComponent,
+    AbonnementFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule, // Ajoutez cette ligne
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

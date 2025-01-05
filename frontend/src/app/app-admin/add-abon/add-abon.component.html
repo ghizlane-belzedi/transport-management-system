@@ -1,0 +1,211 @@
+<section class="admin-dashboard">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Column for the Animated Image -->
+      <div class="col-12 text-center mb-5">
+        <img
+          src="assets/img/hero-img.png"
+          class="img-fluid animated"
+          alt="Admin Dashboard Illustration"
+          width="50%"
+        />
+      </div>
+
+      <!-- Column for the Admin Content -->
+      <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-4" style="color: #080163">
+          Gérer les Abonnements
+        </h1>
+        <p class="lead mb-5" style="color: rgb(0, 38, 56)">
+          Ajoutez ou modifiez un abonnement pour les utilisateurs.
+        </p>
+
+        <!-- Formulaire pour Ajouter ou Modifier un Abonnement -->
+        <div class="card bg-light rounded-3 shadow p-4">
+          <form
+            class="w-75 m-auto"
+            [formGroup]="abonnementForm"
+            (ngSubmit)="submit()"
+          >
+            <!-- Date de Début -->
+            <div class="mb-4">
+              <label for="dateDebut" class="form-label fw-bold"
+                >Date de Début</label
+              >
+              <input
+                formControlName="dateDebut"
+                type="date"
+                id="dateDebut"
+                class="form-control form-control-lg"
+              />
+              <div
+                *ngIf="
+                  controls['dateDebut'].touched && controls['dateDebut'].invalid
+                "
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['dateDebut'].errors?.['required']"
+                  >La date de début est requise.</span
+                >
+              </div>
+            </div>
+
+            <!-- Date de Fin -->
+            <div class="mb-4">
+              <label for="dateFin" class="form-label fw-bold"
+                >Date de Fin</label
+              >
+              <input
+                formControlName="dateFin"
+                type="date"
+                id="dateFin"
+                class="form-control form-control-lg"
+              />
+              <div
+                *ngIf="
+                  controls['dateFin'].touched && controls['dateFin'].invalid
+                "
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['dateFin'].errors?.['required']"
+                  >La date de fin est requise.</span
+                >
+              </div>
+            </div>
+
+            <!-- Statut -->
+            <div class="mb-4">
+              <label for="statut" class="form-label fw-bold">Statut</label>
+              <select
+                formControlName="statut"
+                id="statut"
+                class="form-control form-control-lg"
+              >
+                <option value="ACTIVE">Actif</option>
+                <option value="INACTIVE">Inactif</option>
+              </select>
+              <div
+                *ngIf="controls['statut'].touched && controls['statut'].invalid"
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['statut'].errors?.['required']"
+                  >Le statut est requis.</span
+                >
+              </div>
+            </div>
+
+            <!-- Type de Plan -->
+            <div class="mb-4">
+              <label for="typePlan" class="form-label fw-bold"
+                >Type de Plan</label
+              >
+              <select
+                formControlName="typePlan"
+                id="typePlan"
+                class="form-control form-control-lg"
+              >
+                <option value="MENSUEL">Mensuel</option>
+                <option value="ANNUEL">Annuel</option>
+              </select>
+              <div
+                *ngIf="
+                  controls['typePlan'].touched && controls['typePlan'].invalid
+                "
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['typePlan'].errors?.['required']"
+                  >Le type de plan est requis.</span
+                >
+              </div>
+            </div>
+
+            <!-- Prix -->
+            <div class="mb-4">
+              <label for="prix" class="form-label fw-bold">Prix</label>
+              <input
+                formControlName="prix"
+                type="number"
+                id="prix"
+                class="form-control form-control-lg"
+                placeholder="Entrez le prix"
+              />
+              <div
+                *ngIf="controls['prix'].touched && controls['prix'].invalid"
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['prix'].errors?.['required']"
+                  >Le prix est requis.</span
+                >
+                <span *ngIf="controls['prix'].errors?.['min']"
+                  >Le prix doit être supérieur à 0.</span
+                >
+              </div>
+            </div>
+
+            <!-- Durée -->
+            <div class="mb-4">
+              <label for="duree" class="form-label fw-bold"
+                >Durée (en jours)</label
+              >
+              <input
+                formControlName="duree"
+                type="number"
+                id="duree"
+                class="form-control form-control-lg"
+                placeholder="Entrez la durée"
+              />
+              <div
+                *ngIf="controls['duree'].touched && controls['duree'].invalid"
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['duree'].errors?.['required']"
+                  >La durée est requise.</span
+                >
+                <span *ngIf="controls['duree'].errors?.['min']"
+                  >La durée doit être supérieure à 0.</span
+                >
+              </div>
+            </div>
+
+            <!-- Utilisateur -->
+            <div class="mb-4">
+              <label for="utilisateur" class="form-label fw-bold"
+                >Utilisateur</label
+              >
+              <select
+                formControlName="utilisateur"
+                id="utilisateur"
+                class="form-control form-control-lg"
+              >
+                <option
+                  *ngFor="let user of utilisateurs"
+                  [value]="user.idUtilisateur"
+                >
+                  {{ user.nom }} ({{ user.email }})
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  controls['utilisateur'].touched &&
+                  controls['utilisateur'].invalid
+                "
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['utilisateur'].errors?.['required']"
+                  >L'utilisateur est requis.</span
+                >
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">
+                {{ isEditMode ? "Mettre à jour" : "Ajouter" }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
