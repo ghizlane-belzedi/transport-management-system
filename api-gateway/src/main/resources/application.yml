@@ -1,0 +1,43 @@
+server:
+  port: 8081
+
+spring:
+  main:
+    web-application-type: reactive
+  datasource:
+    initialize: false  # Empêche l'initialisation de la base de données
+
+  cloud:
+    compatibility-verifier:
+      enabled:false
+    gateway:
+      routes:
+        - id: user-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/utilisateurs/**
+
+        - id: subscription-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/abonnements/**
+
+        - id: ticket-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/tickets/**
+
+        - id: timetable-service
+          uri: http://localhost:8181
+          predicates:
+            - Path=/bus/**
+
+        - id: timetable-service
+          uri: http://localhost:8181
+          predicates:
+            - Path=/trajet/**
+
+        - id: timetable-service
+          uri: http://localhost:8181
+          predicates:
+            - Path=/trajetBus/**

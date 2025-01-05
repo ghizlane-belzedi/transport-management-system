@@ -1,5 +1,0 @@
-org\sop\module\Commande.class
-org\sop\CommandeServiceApplication.class
-org\sop\controller\CommandeController.class
-org\sop\service\CommandeService.class
-org\sop\repository\CommandeRepository.class

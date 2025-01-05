@@ -3,8 +3,6 @@ package org.sop.ticket_service.service;
 import org.sop.ticket_service.dto.TicketDTO;
 import org.sop.ticket_service.model.Ticket;
 import org.sop.ticket_service.repository.TicketRepository;
-import org.sop.user_service.DTO.UtilisateurDTO;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

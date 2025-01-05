@@ -12,18 +12,31 @@ import java.util.List;
 public class Trajet {
     @Id
     private String idTrajet;
+    private String nom;
     private String depart;
     private String arrivee;
     private float duree;
     private float distance;
    // private List<Horaire> horaires;
 
-    public Trajet(String idTrajet, String depart, String arrivee, float duree, float distance) {
+    public String getNom() {
+        return nom;
+    }
+
+    public void setName(String nom) {
+        this.nom = nom;
+    }
+
+    public Trajet() {
+    }
+
+    public Trajet(String idTrajet, String nom, String depart, String arrivee, float duree, float distance) {
         this.idTrajet = idTrajet;
         this.depart = depart;
         this.arrivee = arrivee;
         this.duree = duree;
         this.distance = distance;
+        this.nom = nom;
         //this.horaires = new ArrayList();
     }
 

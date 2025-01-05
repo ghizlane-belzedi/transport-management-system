@@ -34,8 +34,11 @@ public class TrajetController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
+    @GetMapping("/name/{nom}")
+    public ResponseEntity<Trajet> getTrajetByNom(@PathVariable String nom) {
+        Optional<Trajet> trajet = trajetService.getTrajetByNom(nom);
+        return trajet.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
     @GetMapping({"/{id}"})
     public Optional<Trajet> getTrajetById(@PathVariable String id) {
         return this.trajetService.getTrajetById(id);

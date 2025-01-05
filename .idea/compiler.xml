@@ -15,7 +15,6 @@
         <module name="subscription-service" />
         <module name="geo-location-service" />
         <module name="api-gateway" />
-        <module name="commandes-service" />
         <module name="user-service" />
         <module name="notification-service" />
         <module name="ticket-service" />
@@ -23,6 +22,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commande-service" target="17" />
+      <module name="commandes-service" target="17" />
       <module name="controller" target="17" />
       <module name="frontend" target="17" />
       <module name="subscription" target="17" />

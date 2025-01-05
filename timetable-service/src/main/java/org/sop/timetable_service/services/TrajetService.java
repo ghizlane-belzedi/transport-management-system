@@ -24,7 +24,9 @@ public class TrajetService {
     public Optional<Trajet> getTrajetById(String idTrajet) {
         return this.trajets.findById(idTrajet);
     }
-
+    public Optional<Trajet> getTrajetByNom(String nom) {
+        return this.trajets.findByNom(nom);  // Méthode ajoutée pour récupérer un trajet par son nom
+    }
     public Trajet ajouterTrajet(Trajet trajet) {
         return (Trajet)this.trajets.save(trajet);
     }

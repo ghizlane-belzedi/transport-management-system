@@ -20,6 +20,7 @@ public class TicketController {
     @PostMapping
     public ResponseEntity<TicketDTO> createTicket(@RequestBody TicketDTO ticketDTO) {
         TicketDTO createdTicket = ticketService.createTicket(ticketDTO);
+
         return ResponseEntity.ok(createdTicket);
     }
 
