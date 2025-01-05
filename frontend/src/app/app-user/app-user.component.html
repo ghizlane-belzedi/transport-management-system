@@ -1,69 +1,89 @@
 <section class="user-dashboard">
-    <div class="container">
-      <div class="row justify-content-center">
-        <!-- Column for the Animated Image -->
-        <div class="col-12 text-center mb-5">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="User Dashboard Illustration" width="50%">
-        </div>
-  
-        <!-- Column for the User Content -->
-        <div class="col-12 text-center">
-          <h1 class="display-4 fw-bold mb-4" style="color: #080163;">Tableau de Bord Utilisateur</h1>
-          <p class="lead mb-5" style="color: rgb(0,38,56);">
-            Bienvenue sur votre tableau de bord. Achetez des tickets, consultez les trajets et suivez les bus en temps réel.
-          </p>
-  
-          <!-- Cards for User Actions -->
-          <div class="row justify-content-center">
-            <!-- Card for Buying Tickets -->
-            <div class="col-md-4 mb-4">
-              <div class="card user-card h-100">
-                <div class="card-body text-center d-flex flex-column">
-                  <i class="fas fa-ticket-alt fa-3x mb-3" style="color: #080163;"></i>
-                  <h3 class="card-title h5">Acheter un Ticket</h3>
-                  <p class="card-text flex-grow-1 small">
-                    Achetez un ticket pour votre trajet en quelques clics.
-                  </p>
-                  <button class="btn btn-primary btn-lg w-100" routerLink="/acheter-ticket">
-                    Acheter un Ticket
-                  </button>
-                </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Column for the Animated Image -->
+      <div class="col-12 text-center mb-5">
+        <img
+          src="assets/img/hero-img.png"
+          class="img-fluid animated"
+          alt="User Dashboard Illustration"
+          width="50%"
+        />
+      </div>
+
+      <!-- Column for the User Content -->
+      <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-4" style="color: #080163">
+          Tableau de Bord Utilisateur
+        </h1>
+        <p class="lead mb-5" style="color: rgb(0, 38, 56)">
+          Bienvenue sur votre tableau de bord. Achetez des tickets, consultez
+          les trajets et suivez les bus en temps réel.
+        </p>
+
+        <!-- Cards for User Actions -->
+        <div class="row justify-content-center">
+          <!-- Card for Buying Tickets -->
+          <div class="col-md-4 mb-4">
+            <div class="card user-card h-100">
+              <div class="card-body text-center d-flex flex-column">
+                <i
+                  class="fas fa-ticket-alt fa-3x mb-3"
+                  style="color: #080163"
+                ></i>
+                <h3 class="card-title h5">Acheter un Ticket</h3>
+                <p class="card-text flex-grow-1 small">
+                  Achetez un ticket pour votre trajet en quelques clics.
+                </p>
+                <button
+                  class="btn btn-primary btn-lg w-100"
+                  routerLink="/ticket"
+                >
+                  Acheter un Ticket
+                </button>
               </div>
             </div>
-  
-            <!-- Card for Viewing Trajets -->
-            <div class="col-md-4 mb-4">
-              <div class="card user-card h-100">
-                <div class="card-body text-center d-flex flex-column">
-                  <i class="fas fa-route fa-3x mb-3" style="color: #080163;"></i>
-                  <h3 class="card-title h5">Voir les Trajets</h3>
-                  <p class="card-text flex-grow-1 small">
-                    Consultez les trajets disponibles et planifiez votre voyage.
-                  </p>
-                  <button class="btn btn-primary btn-lg w-100" routerLink="/trajets">
-                    Voir les Trajets
-                  </button>
-                </div>
+          </div>
+
+          <!-- Card for Viewing Trajets -->
+          <div class="col-md-4 mb-4">
+            <div class="card user-card h-100">
+              <div class="card-body text-center d-flex flex-column">
+                <i class="fas fa-route fa-3x mb-3" style="color: #080163"></i>
+                <h3 class="card-title h5">Voir les Trajets</h3>
+                <p class="card-text flex-grow-1 small">
+                  Consultez les trajets disponibles et planifiez votre voyage.
+                </p>
+                <button
+                  class="btn btn-primary btn-lg w-100"
+                  routerLink="/trajets"
+                >
+                  Voir les Trajets
+                </button>
               </div>
             </div>
-  
-            <!-- Card for Real-Time Bus Tracking -->
-            <div class="col-md-4 mb-4">
-              <div class="card user-card h-100">
-                <div class="card-body text-center d-flex flex-column">
-                  <i class="fas fa-bus fa-3x mb-3" style="color: #080163;"></i>
-                  <h3 class="card-title h5">Suivre le Bus en Temps Réel</h3>
-                  <p class="card-text flex-grow-1 small">
-                    Suivez votre bus en temps réel pour ne jamais le manquer.
-                  </p>
-                  <button class="btn btn-primary btn-lg w-100" routerLink="/suivre-bus">
-                    Suivre le Bus
-                  </button>
-                </div>
+          </div>
+
+          <!-- Card for Real-Time Bus Tracking -->
+          <div class="col-md-4 mb-4">
+            <div class="card user-card h-100">
+              <div class="card-body text-center d-flex flex-column">
+                <i class="fas fa-bus fa-3x mb-3" style="color: #080163"></i>
+                <h3 class="card-title h5">Suivre le Bus en Temps Réel</h3>
+                <p class="card-text flex-grow-1 small">
+                  Suivez votre bus en temps réel pour ne jamais le manquer.
+                </p>
+                <button
+                  class="btn btn-primary btn-lg w-100"
+                  routerLink="/suivre-bus"
+                >
+                  Suivre le Bus
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

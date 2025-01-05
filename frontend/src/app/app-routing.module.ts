@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
+import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppAdminComponent } from './app-admin/app-admin.component';
 import { AppUserComponent } from './app-user/app-user.component';
 import { SuiviComponent } from './app-user/suivi/suivi.component';
@@ -24,6 +25,8 @@ const routes: Routes = [
     children: [
       { path: 'trajet', component: AddTrajetComponent },
       { path: 'abon', component: AbonnementFormComponent },
+      { path: 'adduser', component: AddUserComponent },
+
       { path: '', redirectTo: 'admin', pathMatch: 'full' },
     ],
   },
@@ -31,7 +34,7 @@ const routes: Routes = [
     path: 'user',
     component: AppUserComponent,
     children: [
-      { path: 'trajet', component: TrajetComponent },
+      { path: 'trajets', component: TrajetComponent },
       { path: 'ticket', component: TicketComponent },
       { path: 'suivi', component: SuiviComponent },
       { path: '', redirectTo: 'user', pathMatch: 'full' },

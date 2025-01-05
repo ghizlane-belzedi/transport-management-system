@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { AppUserComponent } from './app-user/app-user.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppUserComponent } from './app-user/app-user.component';
 
-import { AppAdminComponent } from './app-admin/app-admin.component';
-import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
-import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
+import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
+import { AppAdminComponent } from './app-admin/app-admin.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppAdminComponent,
     AddTrajetComponent,
     AbonnementFormComponent,
+    AppUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
