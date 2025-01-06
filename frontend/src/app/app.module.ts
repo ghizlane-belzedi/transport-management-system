@@ -16,6 +16,9 @@ import { TicketComponent } from './app-user/ticket/ticket.component';
 import { BusLocationComponent } from './app-user/bus-location/bus-location.component';
 import { TrajetComponent } from './app-user/trajet/trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
+import { AppDriverComponent } from './app-driver/app-driver.component';
+import { NotificationComponent } from './app-driver/notification/notification.component';
+import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
 
 
 @NgModule({
@@ -31,6 +34,9 @@ import { AddUserComponent } from './app-admin/add-user/add-user.component';
     BusLocationComponent,
     TrajetComponent,
     AddUserComponent,
+    AppDriverComponent,
+    NotificationComponent,
+    AddBusComponent,
     
   ],
   imports: [

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Bus } from '../models/bus';
+import { BusLocation } from '../models/bus';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,8 @@ export class BusLocationService {
   constructor(private http: HttpClient) {}
 
   // Récupérer la position d'un bus par son numéro
-  getBusLocation(busNumber: string): Observable<Bus> {
-    return this.http.get<Bus>(`${this.apiUrl}/${busNumber}`);
+  getBusLocation(busNumber: string): Observable<BusLocation> {
+    return this.http.get<BusLocation>(`${this.apiUrl}/${busNumber}`);
   }
 
   // Récupérer l'adresse à partir des coordonnées (via le backend qui utilise OSM)

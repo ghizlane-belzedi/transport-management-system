@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet'; // Importer Leaflet
-import { Bus } from 'src/app/models/bus';
+import { BusLocation } from 'src/app/models/bus';
 import { BusLocationService } from 'src/app/services/bus-location-service.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BusLocationService } from 'src/app/services/bus-location-service.servic
 })
 export class BusLocationComponent implements OnInit, AfterViewInit {
   busNumber: string = ''; // Ajoutez cette ligne
-  bus: Bus | null = null; // Informations du bus
+  bus: BusLocation | null = null; // Informations du bus
   address: string = ''; // Adresse correspondant aux coordonnées
   private map: any; // Carte Leaflet
   private marker: L.Marker | null = null; // Marqueur pour la position du bus

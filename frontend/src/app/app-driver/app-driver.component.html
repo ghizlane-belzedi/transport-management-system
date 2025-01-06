@@ -1,0 +1,60 @@
+<section class="admin-dashboard">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Colonne pour l'image animée -->
+        <div class="col-12 text-center mb-5">
+          <img
+            src="assets/img/hero-img.png"
+            class="img-fluid animated"
+            alt="Illustration du tableau de bord administrateur"
+            width="50%"
+          />
+        </div>
+  
+        <!-- Colonne pour le contenu administrateur -->
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-4" style="color: #080163;">
+            Espace Conducteur
+          </h1>
+          <p class="lead mb-5" style="color: rgb(0, 38, 56);">
+            Bienvenue sur l'espace Conducteur. Gérez les trajets et les notifications de manière efficace.
+          </p>
+  
+          <!-- Cartes pour les actions administrateur -->
+          <div class="row justify-content-center">
+            <!-- Carte pour la gestion des retards -->
+            <div class="col-md-4 mb-4">
+              <div class="card admin-card h-100">
+                <div class="card-body text-center d-flex flex-column">
+                  <i class="fas fa-route fa-3x mb-3" style="color: #080163;"></i>
+                  <h3 class="card-title h5">Notifier un retard</h3>
+                  <p class="card-text flex-grow-1 small">
+                    Notifiez les passagers en cas de retard du bus par l'envoi du .
+                  </p>
+                  <button class="btn btn-primary btn-lg w-100" routerLink="/trajet">
+                    Notifier
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Carte pour la gestion des tickets -->
+            <div class="col-md-4 mb-4">
+              <div class="card admin-card h-100">
+                <div class="card-body text-center d-flex flex-column">
+                  <i class="fas fa-id-card fa-3x mb-3" style="color: #080163;"></i>
+                  <h3 class="card-title h5">Gérer les Tickets</h3>
+                  <p class="card-text flex-grow-1 small">
+                    Gérez les tickets des utilisateurs.
+                  </p>
+                  <button class="btn btn-primary btn-lg w-100" routerLink="/abon">
+                    Accéder aux Tickets
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

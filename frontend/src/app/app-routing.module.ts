@@ -12,6 +12,8 @@ import { TicketComponent } from './app-user/ticket/ticket.component';
 import { BusLocationComponent } from './app-user/bus-location/bus-location.component';
 import { TrajetComponent } from './app-user/trajet/trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
+import { AppDriverComponent } from './app-driver/app-driver.component';
+import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path:'ticket', component: TicketComponent},
   { path:'suivi', component: BusLocationComponent},
   { path:'ajouterUser', component: AddUserComponent },
+  {path:'driver',component:AppDriverComponent},
+  { path:'ajouterbus', component: AddBusComponent },
   { path:'user', component: AppUserComponent ,
     children: [
       { path:'ticket', component: TicketComponent},
@@ -37,6 +41,7 @@ const routes: Routes = [
       { path:'trajet', component: AddTrajetComponent },
       { path:'abon', component: AbonnementFormComponent},
       { path:'ajouterUser', component: AddUserComponent },
+      { path:'ajouterbus', component: AddBusComponent },
       { path: '', redirectTo: 'admin', pathMatch: 'full' } 
     ]
   }
