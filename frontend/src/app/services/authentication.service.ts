@@ -1,5 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http'; // Importez HttpClient et HttpHeaders
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -50,5 +51,19 @@ export class AuthenticationService {
 
   public logout(): void {
     localStorage.removeItem('authToken'); // Supprime le token du localStorage
+  }
+  // Méthode pour récupérer l'ID de l'utilisateur à partir du token JWT
+  public getUserId(): string | null {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token); // Décoder le token JWT
+        return decoded.sub || null; // Le champ 'sub' contient l'ID de l'utilisateur
+      } catch (error) {
+        console.error('Erreur lors du décodage du token:', error);
+        return null;
+      }
+    }
+    return null; // Si pas de token, retourne null
   }
 }

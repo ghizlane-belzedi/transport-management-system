@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'trajet', component: AddTrajetComponent },
   { path: 'abon', component: AbonnementFormComponent },
   { path: 'adduser', component: AddUserComponent },
+  { path: 'ticket', component: TicketComponent },
+  { path: 'trajets', component: TrajetComponent },
 
   {
     path: 'admin',

@@ -1,1 +1,24 @@
-<p>trajet works!</p>
+<div class="container mt-5">
+  <h2>Liste des trajets disponibles</h2>
+
+  <!-- Liste des trajets -->
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let trajet of trajets">
+      <h5>Trajet {{ trajet.idTrajet }}</h5>
+      <p>Départ: {{ trajet.depart }}</p>
+      <p>Arrivée: {{ trajet.arrivee }}</p>
+      <p>Durée: {{ trajet.duree }} minutes</p>
+      <p>Distance: {{ trajet.distance }} km</p>
+
+      <!-- Affichage des horaires -->
+      <div *ngIf="trajet.horaires && trajet.horaires.length > 0">
+        <h6>Horaires :</h6>
+        <ul>
+          <li *ngFor="let horaire of trajet.horaires">
+            {{ horaire.heureDepart }} - {{ horaire.heureArrivee }}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

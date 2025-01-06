@@ -13,6 +13,8 @@ import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppAdminComponent } from './app-admin/app-admin.component';
+import { TicketComponent } from './app-user/ticket/ticket.component';
+import { TrajetComponent } from './app-user/trajet/trajet.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { AppAdminComponent } from './app-admin/app-admin.component';
     AbonnementFormComponent,
     AppUserComponent,
     AddUserComponent,
+    TicketComponent,
+    TrajetComponent,
   ],
   imports: [
     BrowserModule,
