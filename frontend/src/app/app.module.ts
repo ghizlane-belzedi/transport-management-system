@@ -28,6 +28,7 @@ import { TrajetComponent } from './app-user/trajet/trajet.component';
     AddUserComponent,
     TicketComponent,
     TrajetComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
