@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
+import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppAdminComponent } from './app-admin/app-admin.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AppAdminComponent } from './app-admin/app-admin.component';
     AddTrajetComponent,
     AbonnementFormComponent,
     AppUserComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,

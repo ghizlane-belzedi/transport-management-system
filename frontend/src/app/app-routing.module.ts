@@ -19,6 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'trajet', component: AddTrajetComponent },
   { path: 'abon', component: AbonnementFormComponent },
+  { path: 'adduser', component: AddUserComponent },
+
   {
     path: 'admin',
     component: AppAdminComponent,
