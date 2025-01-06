@@ -183,6 +183,15 @@
                 <td>{{ user.adresse }}</td>
                 <td>{{ user.telephone }}</td>
                 <td>{{ user.role }}</td>
+                <td>
+                  <!-- add-user.component.html -->
+                  <button
+                    class="btn btn-danger btn-sm"
+                    (click)="deleteUser(user.nomUtilisateur)"
+                  >
+                    Supprimer
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>

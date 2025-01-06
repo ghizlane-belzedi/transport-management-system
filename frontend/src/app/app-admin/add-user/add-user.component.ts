@@ -86,4 +86,44 @@ export class AddUserComponent implements OnInit {
       }
     );
   }
+  // Supprimer un utilisateur
+  deleteUser(nomUtilisateur: string) {
+    Swal.fire({
+      title: 'Êtes-vous sûr?',
+      text: 'Vous ne pourrez pas revenir en arrière!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Oui, supprimer!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteUser(nomUtilisateur).subscribe(
+          () => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Utilisateur supprimé avec succès!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.loadUsers(); // Recharger la liste des utilisateurs après la suppression
+          },
+          (error) => {
+            console.error(
+              "Erreur lors de la suppression de l'utilisateur:",
+              error
+            );
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Erreur lors de la suppression!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        );
+      }
+    });
+  }
 }

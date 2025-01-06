@@ -19,4 +19,10 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);
   }
+  // Supprimer un utilisateur par ID
+  // user.service.ts
+  deleteUser(nomUtilisateur: string): Observable<void> {
+    const url = `${this.apiUrl}/${nomUtilisateur}`; // Modifiez l'URL pour correspondre à votre API
+    return this.http.delete<void>(url);
+  }
 }

@@ -1,4 +1,5 @@
 export interface User {
+  id: number; // Optionnel car généré par le backend
   cin: string;
   nomUtilisateur: string;
   email: string;
