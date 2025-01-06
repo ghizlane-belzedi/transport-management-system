@@ -19,6 +19,7 @@ import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppDriverComponent } from './app-driver/app-driver.component';
 import { NotificationComponent } from './app-driver/notification/notification.component';
 import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
+import { busconsul } from './app-driver/bus-consul/bus-consul.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
     AppDriverComponent,
     NotificationComponent,
     AddBusComponent,
+   busconsul,
     
   ],
   imports: [

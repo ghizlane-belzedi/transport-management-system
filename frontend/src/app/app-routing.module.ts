@@ -14,6 +14,7 @@ import { TrajetComponent } from './app-user/trajet/trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppDriverComponent } from './app-driver/app-driver.component';
 import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
+import { busconsul } from './app-driver/bus-consul/bus-consul.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path:'ajouterUser', component: AddUserComponent },
   {path:'driver',component:AppDriverComponent},
   { path:'ajouterbus', component: AddBusComponent },
+  { path:'buscon', component: busconsul },
+
   { path:'user', component: AppUserComponent ,
     children: [
       { path:'ticket', component: TicketComponent},

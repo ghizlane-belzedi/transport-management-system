@@ -1,0 +1,60 @@
+<!-- bus-consul.component.html -->
+<section class="bus-consul">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+          <h1 class="display-4 fw-bold mb-4" style="color: #080163;">Consulter les Bus</h1>
+          <p class="lead mb-5" style="color: rgb(0,38,56);">
+            Consultez la liste des bus et leurs détails.
+          </p>
+        </div>
+  
+        <!-- Liste des Bus -->
+        <div class="col-12">
+          <div *ngIf="busList?.length === 0" class="alert alert-info">
+            Aucun bus disponible pour le moment.
+          </div>
+  
+          <div *ngFor="let bus of busList" class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+              <h3 class="card-title mb-0">Bus {{ bus.numero }}</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><strong>Capacité :</strong> {{ bus.capacite }}</p>
+              <p class="card-text"><strong>État :</strong> {{ bus.etat }}</p>
+  
+              <!-- Liste des Trajets -->
+              <h4 class="mt-4 mb-3">Trajets associés</h4>
+              <div *ngIf="bus.trajets?.length === 0" class="alert alert-warning">
+                Aucun trajet assigné à ce bus.
+              </div>
+  
+              <div *ngFor="let trajet of bus.trajets" class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Trajet {{ trajet.idTrajet }}</h5>
+                  <p class="card-text"><strong>Départ :</strong> {{ trajet.depart }}</p>
+                  <p class="card-text"><strong>Arrivée :</strong> {{ trajet.arrivee }}</p>
+                  <p class="card-text"><strong>Durée :</strong> {{ trajet.duree }} minutes</p>
+                  <p class="card-text"><strong>Distance :</strong> {{ trajet.distance }} km</p>
+  
+                  <!-- Horaires du Trajet -->
+                  <h6 class="mt-3 mb-2">Horaires</h6>
+                  <div *ngIf="trajet.horaires?.length === 0" class="alert alert-secondary">
+                    Aucun horaire défini pour ce trajet.
+                  </div>
+  
+                  <div *ngFor="let horaire of trajet.horaires" class="card mb-2">
+                    <div class="card-body">
+                      <p class="card-text"><strong>Heure de départ :</strong> {{ horaire.heureDepart | date: 'shortTime' }}</p>
+                      <p class="card-text"><strong>Heure d'arrivée :</strong> {{ horaire.heureArrivee | date: 'shortTime' }}</p>
+                      <p class="card-text"><strong>Date :</strong> {{ horaire.date | date: 'shortDate' }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
