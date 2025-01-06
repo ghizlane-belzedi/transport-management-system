@@ -10,8 +10,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent implements OnInit {
-  // Define the form group
   userForm!: FormGroup;
+  users: User[] = []; // Liste des utilisateurs
 
   constructor(
     private fb: FormBuilder,
@@ -19,7 +19,12 @@ export class AddUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Initialize the form
+    this.initializeForm();
+    this.loadUsers(); // Charger la liste des utilisateurs au démarrage
+  }
+
+  // Initialiser le formulaire
+  initializeForm() {
     this.userForm = this.fb.group({
       cin: ['', Validators.required],
       nomUtilisateur: ['', Validators.required],
@@ -31,12 +36,12 @@ export class AddUserComponent implements OnInit {
     });
   }
 
-  // Getter for form controls
+  // Getter pour les contrôles du formulaire
   get controls() {
     return this.userForm.controls;
   }
 
-  // Submit method
+  // Soumettre le formulaire
   submit() {
     if (this.userForm.invalid) {
       console.error('Le formulaire est invalide');
@@ -54,6 +59,8 @@ export class AddUserComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
+        this.loadUsers(); // Recharger la liste des utilisateurs après l'ajout
+        this.userForm.reset(); // Réinitialiser le formulaire
       },
       (error) => {
         console.error("Erreur lors de l'ajout de l'utilisateur:", error);
@@ -64,6 +71,18 @@ export class AddUserComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
+      }
+    );
+  }
+
+  // Charger la liste des utilisateurs
+  loadUsers() {
+    this.userService.getUsers().subscribe(
+      (users: User[]) => {
+        this.users = users;
+      },
+      (error) => {
+        console.error("Erreur lors de la récupération des utilisateurs:", error);
       }
     );
   }
