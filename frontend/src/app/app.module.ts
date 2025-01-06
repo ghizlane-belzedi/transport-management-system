@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TicketComponent } from './app-user/ticket/ticket.component';
 import { BusLocationComponent } from './app-user/bus-location/bus-location.component';
 import { TrajetComponent } from './app-user/trajet/trajet.component';
+import { AddUserComponent } from './app-admin/add-user/add-user.component';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import { TrajetComponent } from './app-user/trajet/trajet.component';
     AppUserComponent,
     TicketComponent,
     BusLocationComponent,
-    TrajetComponent
+    TrajetComponent,
+    AddUserComponent,
+    
   ],
   imports: [
     BrowserModule,

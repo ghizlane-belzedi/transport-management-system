@@ -2,31 +2,35 @@ import {Injectable} from '@angular/core';
 // @ts-ignore
 import * as uuid from "uuid";
 import {Observable, of, throwError} from "rxjs";
-import { AppUser } from '../models/user.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  users: AppUser[] = [];
-  authenticatedUser: AppUser | undefined;
+  users: User[] = [];
+  authenticatedUser: User | undefined;
 
   constructor() {
-    this.users.push({userId: uuid.v4(), username: "fatima zhr", password: "1234"})
+    this.users.push({
+      cin: "cd753202", nomUtilisateur: "fatima zhr", motDePasse: "1234",
+      email: '',
+      role: ''
+    })
   }
 
-  public login(username: string, password: string): Observable<AppUser> {
-    let appUser = this.users.find(u => u.username == username);
+  public login(nomUtilisateur: string, motDePasse: string): Observable<User> {
+    let appUser = this.users.find(u => u.nomUtilisateur == nomUtilisateur);
     if (!appUser) return throwError(() => new Error("User not found"));
-    if (appUser.password != password) return throwError(() => new Error("Bad Credentials"));
+    if (appUser.motDePasse != motDePasse) return throwError(() => new Error("Bad Credentials"));
     return of(appUser);
   }
 
-  public authenticateUser(appUser: AppUser): Observable<boolean> {
+  public authenticateUser(appUser: User): Observable<boolean> {
     this.authenticatedUser = appUser;
     localStorage.setItem("authUser", JSON.stringify({
-      username: appUser.username,
-      password: appUser.password,
+      username: appUser.nomUtilisateur,
+      motDePasse: appUser.motDePasse,
       jwt: "JWT_TOKEN"
     }))
     return of(true);

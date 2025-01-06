@@ -1,0 +1,162 @@
+<section class="admin-dashboard">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+          <img
+            src="assets/img/hero-img.png"
+            class="img-fluid animated"
+            alt="Admin Dashboard Illustration"
+            width="50%"
+          />
+        </div>
+  
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-4" style="color: #080163">
+            Ajouter un Utilisateur
+          </h1>
+          <p class="lead mb-5" style="color: rgb(0, 38, 56)">
+            Remplissez les informations pour ajouter un nouvel utilisateur.
+          </p>
+  
+          <div class="card bg-light rounded-3 shadow p-4">
+            <form
+              class="w-75 m-auto"
+              [formGroup]="userForm"
+              (ngSubmit)="submit()"
+            >
+              <div class="mb-4">
+                <label for="cin" class="form-label fw-bold">CIN</label>
+                <input
+                  formControlName="cin"
+                  type="text"
+                  id="cin"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le CIN"
+                />
+                <div
+                  *ngIf="controls['cin'].touched && controls['cin'].invalid"
+                  class="text-danger mt-2"
+                >
+                  <span *ngIf="controls['cin'].errors?.['required']"
+                    >Le CIN est requis.</span
+                  >
+                </div>
+              </div>
+  
+              <div class="mb-4">
+                <label for="nomUtilisateur" class="form-label fw-bold">Nom</label>
+                <input
+                  formControlName="nomUtilisateur"
+                  type="text"
+                  id="nomUtilisateur"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le nom"
+                />
+                <div
+                  *ngIf="
+                    controls['nomUtilisateur'].touched &&
+                    controls['nomUtilisateur'].invalid
+                  "
+                  class="text-danger mt-2"
+                >
+                  <span *ngIf="controls['nomUtilisateur'].errors?.['required']"
+                    >Le nom est requis.</span
+                  >
+                </div>
+              </div>
+  
+              <div class="mb-4">
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input
+                  formControlName="email"
+                  type="email"
+                  id="email"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez l'email"
+                />
+                <div
+                  *ngIf="controls['email'].touched && controls['email'].invalid"
+                  class="text-danger mt-2"
+                >
+                  <span *ngIf="controls['email'].errors?.['required']"
+                    >L'email est requis.</span
+                  >
+                  <span *ngIf="controls['email'].errors?.['email']"
+                    >L'email n'est pas valide.</span
+                  >
+                </div>
+              </div>
+  
+              <div class="mb-4">
+                <label for="adresse" class="form-label fw-bold">Adresse</label>
+                <input
+                  formControlName="adresse"
+                  type="text"
+                  id="adresse"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez l'adresse"
+                />
+              </div>
+  
+              <div class="mb-4">
+                <label for="telephone" class="form-label fw-bold"
+                  >Téléphone</label
+                >
+                <input
+                  formControlName="telephone"
+                  type="text"
+                  id="telephone"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le téléphone"
+                />
+              </div>
+  
+              <div class="mb-4">
+                <label for="role" class="form-label fw-bold">Rôle</label>
+                <select
+                  formControlName="role"
+                  id="role"
+                  class="form-control form-control-lg"
+                >
+                  <option value="DRIVER">Conducteur</option>
+                  <option value="ADMIN">Administrateur</option>
+                  <option value="USER">Utilisateur</option>
+                </select>
+              </div>
+  
+              <div class="mb-4">
+                <label for="motDePasse" class="form-label fw-bold"
+                  >Mot de Passe</label
+                >
+                <input
+                  formControlName="motDePasse"
+                  type="password"
+                  id="motDePasse"
+                  class="form-control form-control-lg"
+                  placeholder="Entrez le mot de passe"
+                />
+                <div
+                  *ngIf="
+                    controls['motDePasse'].touched &&
+                    controls['motDePasse'].invalid
+                  "
+                  class="text-danger mt-2"
+                >
+                  <span *ngIf="controls['motDePasse'].errors?.['required']"
+                    >Le mot de passe est requis.</span
+                  >
+                </div>
+              </div>
+  
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Ajouter
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
