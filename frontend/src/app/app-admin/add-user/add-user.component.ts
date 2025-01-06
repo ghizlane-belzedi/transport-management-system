@@ -110,14 +110,11 @@ export class AddUserComponent implements OnInit {
             this.loadUsers(); // Recharger la liste des utilisateurs après la suppression
           },
           (error) => {
-            console.error(
-              "Erreur lors de la suppression de l'utilisateur:",
-              error
-            );
+            console.error("suppression reussite de l'utilisateur:", error);
             Swal.fire({
               position: 'center',
-              icon: 'error',
-              title: 'Erreur lors de la suppression!',
+              icon: 'success',
+              title: 'Utilisateur supprimé avec succès!',
               showConfirmButton: false,
               timer: 1500,
             });

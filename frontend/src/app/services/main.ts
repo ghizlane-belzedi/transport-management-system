@@ -2,41 +2,46 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Trajet } from '../models/trajet';
-// Import the Trajet model
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainService {
-  private apiUrl = 'http://localhost:8181/trajet'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8181/trajet'; // Remplacez par votre endpoint API
 
   constructor(private http: HttpClient) {}
 
-  // Fetch all trajets
+  // Récupérer tous les trajets
   getTrajets(): Observable<Trajet[]> {
     return this.http.get<Trajet[]>(this.apiUrl);
   }
 
-  // Fetch a single trajet by ID
+  // Récupérer un trajet par son ID
   getTrajetById(id: string): Observable<Trajet> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Trajet>(url);
   }
 
-  // Add a new trajet
+  // Ajouter un nouveau trajet
   addTrajet(trajet: Trajet): Observable<Trajet> {
     return this.http.post<Trajet>(this.apiUrl, trajet);
   }
 
-  // Update an existing trajet
+  // Mettre à jour un trajet existant
   updateTrajet(id: string, trajet: Trajet): Observable<Trajet> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<Trajet>(url, trajet);
   }
 
-  // Delete a trajet
+  // Supprimer un trajet
   deleteTrajet(id: string): Observable<void> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
+  }
+
+  // Vérifier si un trajet avec cet ID existe déjà
+  checkIfTrajetExists(id: string): Observable<boolean> {
+    const url = `${this.apiUrl}/exists/${id}`;
+    return this.http.get<boolean>(url);
   }
 }

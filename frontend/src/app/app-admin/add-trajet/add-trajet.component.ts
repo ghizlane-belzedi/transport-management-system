@@ -38,6 +38,14 @@ export class AddTrajetComponent implements OnInit {
   // Initialisation du formulaire pour l'ajout
   initForm(): void {
     this.trajetForm = this.formBuilder.group({
+      idTrajet: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       depart: [
         '',
         [
@@ -82,6 +90,7 @@ export class AddTrajetComponent implements OnInit {
   initFormForUpdate(): void {
     if (this.trajet) {
       this.trajetForm.patchValue({
+        idTrajet: this.trajet.idTrajet || '',
         depart: this.trajet.depart || '',
         arrivee: this.trajet.arrivee || '',
         duree: this.trajet.duree || null,

@@ -73,7 +73,7 @@ export class AbonnementFormComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Trajet ajouté avec succès!',
+            title: 'Abonnement ajouté avec succès!',
             showConfirmButton: false,
             timer: 1500,
           });
