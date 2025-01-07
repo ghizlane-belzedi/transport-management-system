@@ -16,6 +16,9 @@ import { AssignTrajetBusComponent } from './app-admin/add-bus/trajet-bus/trajetb
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppAdminComponent } from './app-admin/app-admin.component';
+import { AppDriverComponent } from './app-driver/app-driver.component';
+import { busconsul } from './app-driver/bus-consul/bus-consul.component';
+import { BusLocationComponent } from './app-user/bus-location/bus-location.component';
 import { TicketComponent } from './app-user/ticket/ticket.component';
 import { TrajetComponent } from './app-user/trajet/trajet.component';
 
@@ -35,6 +38,9 @@ import { TrajetComponent } from './app-user/trajet/trajet.component';
     AddBusComponent,
     AddBussComponent,
     AssignTrajetBusComponent,
+    AppDriverComponent,
+    busconsul,
+    BusLocationComponent,
   ],
   imports: [
     BrowserModule,

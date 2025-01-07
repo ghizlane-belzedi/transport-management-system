@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h2>Suivi des bus en temps réel</h2>
+
+  <!-- Formulaire pour entrer le numéro du bus -->
+  <div class="mb-4">
+    <h3>Rechercher un bus</h3>
+    <div class="mb-3">
+      <label for="busId" class="form-label">ID du bus</label>
+      <input
+        type="text"
+        class="form-control"
+        id="busId"
+        [(ngModel)]="busId"
+        placeholder="Entrez le numéro du bus"
+      />
+    </div>
+    <button class="btn btn-primary" (click)="loadBusLocation()">
+      Rechercher
+    </button>
+  </div>
+
+  <!-- Carte Leaflet -->
+  <div id="map" style="height: 400px; margin-bottom: 20px"></div>
+  <!-- Affichage de l'adresse -->
+</div>

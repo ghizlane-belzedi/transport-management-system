@@ -12,7 +12,6 @@ export class BusService {
 
   constructor(private http: HttpClient) {}
 
-  // Récupérer tous les bus
   getAllBuses(): Observable<Bus[]> {
     return this.http.get<Bus[]>(this.apiUrl);
   }
@@ -27,7 +26,9 @@ export class BusService {
     const url = `${this.apiUrl}/${id}/etat`;
     return this.http.put<void>(url, null, { params: { nouvelEtat } });
   }
-
+  getBusesByDriverId(driverId: string): Observable<Bus[]> {
+    return this.http.get<Bus[]>(`${this.apiUrl}`);
+  }
   // Supprimer un bus
   deleteBus(id: string): Observable<void> {
     const url = `${this.apiUrl}/${id}`;

@@ -9,7 +9,10 @@ import { AssignTrajetBusComponent } from './app-admin/add-bus/trajet-bus/trajetb
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppAdminComponent } from './app-admin/app-admin.component';
+import { AppDriverComponent } from './app-driver/app-driver.component';
+import { busconsul } from './app-driver/bus-consul/bus-consul.component';
 import { AppUserComponent } from './app-user/app-user.component';
+import { BusLocationComponent } from './app-user/bus-location/bus-location.component';
 import { SuiviComponent } from './app-user/suivi/suivi.component';
 import { TicketComponent } from './app-user/ticket/ticket.component';
 import { TrajetComponent } from './app-user/trajet/trajet.component';
@@ -28,6 +31,9 @@ const routes: Routes = [
   { path: 'ajouterbus', component: AddBusComponent },
   { path: 'ajouterrbus', component: AddBussComponent },
   { path: 'assign', component: AssignTrajetBusComponent },
+  { path: 'buscon', component: busconsul },
+  { path: 'driver', component: AppDriverComponent },
+  { path: 'suivi', component: BusLocationComponent },
 
   {
     path: 'admin',
