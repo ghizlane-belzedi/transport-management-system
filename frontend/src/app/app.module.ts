@@ -20,6 +20,7 @@ import { AppDriverComponent } from './app-driver/app-driver.component';
 import { NotificationComponent } from './app-driver/notification/notification.component';
 import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
 import { busconsul } from './app-driver/bus-consul/bus-consul.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { busconsul } from './app-driver/bus-consul/bus-consul.component';
     NotificationComponent,
     AddBusComponent,
    busconsul,
+   ChatbotComponent,
     
   ],
   imports: [

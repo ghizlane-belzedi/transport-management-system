@@ -1,53 +1,42 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class ChatbotService {
-    private chatbot = new Chatbot();
+    // Define responses for different intents
+    private responses: { [key: string]: string } = {
+        "hello": "Hello! How can I assist you today?",
+        "hi": "Hi there! How can I help you?",
+        "how are you": "I'm just a chatbot, but I'm here to help!",
+        "bye": "Goodbye! Have a great day!",
+        "comment je peux acceder pour acheter un ticket": "Veuillez consulter la rubrique 'Acheter un ticket' et remplir les champs requis.",
+        "comment je peux acceder pour voir les trajets": "Veuillez consulter la rubrique 'Voir les trajets' pour visualiser les trajets disponibles.",
+        "donner moi les trajets": "Veuillez consulter la rubrique 'Voir les trajets' pour visualiser tous les trajets.",
+        "unknown": "Je suis désolé, je n'ai pas compris. Pouvez-vous reformuler votre question ?"
+    };
 
     constructor() {}
 
-    // Get a response from the chatbot
-    public getResponse(userInput: string): string {
-        return this.chatbot.getResponse(userInput);
-    }
-}
+    // Get a response based on user input
+    getResponse(userInput: string): string {
+        const lowerCaseInput = userInput.toLowerCase();
 
-// Chatbot class (defined above)
-class Chatbot {
-    private responses: { [key: string]: string } = {
-        greeting: "Hello! How can I help you today?",
-        farewell: "Goodbye! Have a great day!",
-        thanks: "You're welcome! Let me know if you need anything else.",
-        transport_schedule: "The bus 12 runs every 15 minutes from 6 AM to 10 PM.",
-        transport_route: "Bus 8 starts from the central station and stops at A, B, and C.",
-        transport_fare: "A bus ticket costs $1.50. Monthly passes are also available.",
-        unknown: "I'm sorry, I don't understand. Can you rephrase that?"
-    };
-
-    private recognizeIntent(userInput: string): string {
-        userInput = userInput.toLowerCase();
-
-        if (userInput.includes("hello") || userInput.includes("hi") || userInput.includes("hey")) {
-            return "greeting";
-        } else if (userInput.includes("bye") || userInput.includes("goodbye") || userInput.includes("see you")) {
-            return "farewell";
-        } else if (userInput.includes("thank you") || userInput.includes("thanks") || userInput.includes("appreciate it")) {
-            return "thanks";
-        } else if (userInput.includes("schedule") || userInput.includes("bus") || userInput.includes("time")) {
-            return "transport_schedule";
-        } else if (userInput.includes("route") || userInput.includes("stops") || userInput.includes("bus 8")) {
-            return "transport_route";
-        } else if (userInput.includes("fare") || userInput.includes("cost") || userInput.includes("price")) {
-            return "transport_fare";
+        // Check for specific intents
+        if (lowerCaseInput.includes('hello') || lowerCaseInput.includes('hi')) {
+            return this.responses["hello"];
+        } else if (lowerCaseInput.includes('how are you')) {
+            return this.responses["how are you"];
+        } else if (lowerCaseInput.includes('bye')) {
+            return this.responses["bye"];
+        } else if (lowerCaseInput.includes('acheter un ticket') || lowerCaseInput.includes('accéder pour acheter un ticket')) {
+            return this.responses["comment je peux acceder pour acheter un ticket"];
+        } else if (lowerCaseInput.includes('voir les trajets') || lowerCaseInput.includes('accéder pour voir les trajets')) {
+            return this.responses["comment je peux acceder pour voir les trajets"];
+        } else if (lowerCaseInput.includes('donner moi les trajets') || lowerCaseInput.includes('trajets')) {
+            return this.responses["donner moi les trajets"];
         } else {
-            return "unknown";
+            return this.responses["unknown"];
         }
-    }
-
-    public getResponse(userInput: string): string {
-        const intent = this.recognizeIntent(userInput);
-        return this.responses[intent] || this.responses["unknown"];
     }
 }

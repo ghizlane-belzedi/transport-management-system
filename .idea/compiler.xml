@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="timetable-service" />
+        <module name="chatbot" />
         <module name="subscription-service" />
         <module name="geo-location-service" />
         <module name="api-gateway" />
