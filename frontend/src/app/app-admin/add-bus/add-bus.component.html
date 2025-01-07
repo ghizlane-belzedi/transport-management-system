@@ -1,0 +1,170 @@
+<section class="admin-dashboard">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Column for the Animated Image -->
+      <div class="col-12 text-center mb-5">
+        <img
+          src="assets/img/hero-img.png"
+          class="img-fluid animated"
+          alt="Admin Dashboard Illustration"
+          width="50%"
+        />
+      </div>
+
+      <!-- Column for the Admin Content -->
+      <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-4" style="color: #080163">
+          Gérer les Bus
+        </h1>
+        <p class="lead mb-5" style="color: rgb(0, 38, 56)">
+          Ajoutez ou modifiez un bus avec ses trajets.
+        </p>
+
+        <!-- Formulaire pour Ajouter ou Modifier un Bus -->
+        <div class="card bg-light rounded-3 shadow p-4">
+          <form class="w-75 m-auto" [formGroup]="busForm" (ngSubmit)="submit()">
+            <!-- Numéro du Bus -->
+            <div class="mb-4">
+              <label for="numero" class="form-label fw-bold"
+                >Numéro du Bus</label
+              >
+              <input
+                formControlName="numero"
+                type="text"
+                id="numero"
+                class="form-control form-control-lg"
+                placeholder="Entrez le numéro du bus"
+              />
+              <div
+                *ngIf="controls['numero'].touched && controls['numero'].invalid"
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['numero'].errors?.['required']"
+                  >Le numéro du bus est requis.</span
+                >
+              </div>
+            </div>
+
+            <!-- Capacité du Bus -->
+            <div class="mb-4">
+              <label for="capacite" class="form-label fw-bold">Capacité</label>
+              <input
+                formControlName="capacite"
+                type="number"
+                id="capacite"
+                class="form-control form-control-lg"
+                placeholder="Entrez la capacité du bus"
+              />
+              <div
+                *ngIf="
+                  controls['capacite'].touched && controls['capacite'].invalid
+                "
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['capacite'].errors?.['required']"
+                  >La capacité est requise.</span
+                >
+                <span *ngIf="controls['capacite'].errors?.['min']"
+                  >La capacité doit être supérieure à 0.</span
+                >
+              </div>
+            </div>
+
+            <!-- État du Bus -->
+            <div class="mb-4">
+              <label for="etat" class="form-label fw-bold">État</label>
+              <select
+                formControlName="etat"
+                id="etat"
+                class="form-control form-control-lg"
+              >
+                <option value="En service">En service</option>
+                <option value="Hors service">Hors service</option>
+                <option value="En maintenance">En maintenance</option>
+              </select>
+              <div
+                *ngIf="controls['etat'].touched && controls['etat'].invalid"
+                class="text-danger mt-2"
+              >
+                <span *ngIf="controls['etat'].errors?.['required']"
+                  >L'état est requis.</span
+                >
+              </div>
+            </div>
+
+            <!-- Trajets associés -->
+            <div class="mb-4">
+              <h3 class="fw-bold mb-3">Trajets associés</h3>
+              <div formArrayName="trajets">
+                <div
+                  *ngFor="let trajetGroup of trajets.controls; let i = index"
+                  [formGroupName]="i"
+                  class="card mb-3 p-3"
+                >
+                  <h4 class="fw-bold">Trajet {{ i + 1 }}</h4>
+
+                  <!-- Sélection du trajet existant -->
+                  <div class="mb-3">
+                    <label for="idTrajet-{{ i }}" class="form-label fw-bold"
+                      >Sélectionnez un trajet</label
+                    >
+                    <select
+                      formControlName="idTrajet"
+                      id="idTrajet-{{ i }}"
+                      class="form-control form-control-lg"
+                    >
+                      <option
+                        *ngFor="let trajet of trajetsExistants"
+                        [value]="trajet.idTrajet"
+                      >
+                        {{ trajet.depart }} → {{ trajet.arrivee }} (ID:
+                        {{ trajet.idTrajet }})
+                      </option>
+                    </select>
+                    <div
+                      *ngIf="
+                        trajetGroup.get('idTrajet')?.touched &&
+                        trajetGroup.get('idTrajet')?.invalid
+                      "
+                      class="text-danger mt-2"
+                    >
+                      <span
+                        *ngIf="trajetGroup.get('idTrajet')?.errors?.['required']"
+                        >Le trajet est requis.</span
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Bouton pour supprimer un trajet -->
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    (click)="removeTrajet(i)"
+                  >
+                    Supprimer ce trajet
+                  </button>
+                </div>
+              </div>
+
+              <!-- Bouton pour ajouter un trajet -->
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                (click)="addTrajet()"
+              >
+                Ajouter un trajet
+              </button>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">
+                {{ isEditMode ? "Mettre à jour" : "Ajouter" }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

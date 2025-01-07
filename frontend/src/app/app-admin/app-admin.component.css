@@ -1,57 +1,79 @@
 /* Animation pour l'image */
 .animated {
-    animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
+  50% {
+    transform: translateY(-20px);
   }
-  
-  /* Styles pour les cartes */
-  .admin-card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    background-color: #ffffff;
-  }
-  
-  .admin-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .admin-card .card-body {
-    padding: 2rem;
-  }
-  
-  .admin-card .btn {
-    background-color: #080163;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
-  
-  .admin-card .btn:hover {
-    background-color: #0d025e;
-  }
-  
-  /* Additional styles for better spacing and alignment */
-  .admin-dashboard {
-    padding: 60px 0;
-    background-color: #f8f9fa;
-  }
-  
-  .admin-dashboard h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .admin-dashboard p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
+}
+/* Conteneur de la grille pour les cartes */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  grid-template-rows: repeat(2, 1fr); /* 2 lignes */
+  gap: 20px; /* Espacement entre les cartes */
+  max-width: 800px; /* Largeur maximale pour former un carré */
+  margin: 0 auto; /* Centrer la grille */
+}
+
+/* Styles pour les cartes */
+.admin-card {
+  border: none;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Assure que toutes les cartes ont la même hauteur */
+}
+
+.admin-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Effet de survol pour les cartes */
+.hover-effect {
+  transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+  background-color: #f8f9fa;
+}
+
+/* Styles pour les icônes */
+.icon-gradient {
+  background: linear-gradient(45deg, #080163, #0a0180);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Styles pour les boutons */
+.btn-gradient-primary {
+  background: linear-gradient(45deg, #080163, #0a0180);
+  border: none;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gradient-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(8, 1, 99, 0.3);
+}
+
+/* Espacement et alignement */
+.card-body {
+  padding: 2rem;
+}
+
+.card-title {
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  margin-bottom: 1.5rem;
+}

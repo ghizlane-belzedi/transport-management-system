@@ -22,58 +22,72 @@
         </p>
 
         <!-- Cards for Admin Actions -->
-        <div class="row justify-content-center">
+        <div class="cards-grid">
           <!-- Card for Managing Trajets -->
-          <div class="col-md-4 mb-4">
-            <div class="card admin-card h-100">
-              <div class="card-body text-center d-flex flex-column">
-                <i class="fas fa-route fa-3x mb-3" style="color: #080163"></i>
-                <h3 class="card-title h5">Gérer les Trajets</h3>
-                <p class="card-text flex-grow-1 small">
-                  Ajoutez, modifiez ou supprimez des trajets disponibles.
-                </p>
-                <button
-                  class="btn btn-primary btn-lg w-100"
-                  routerLink="/trajet"
-                >
-                  Accéder aux Trajets
-                </button>
-              </div>
+          <div class="card admin-card shadow-lg hover-effect">
+            <div class="card-body text-center d-flex flex-column">
+              <i class="fas fa-route fa-3x mb-3 icon-gradient"></i>
+              <h3 class="card-title h5 fw-bold">Gérer les Trajets</h3>
+              <p class="card-text flex-grow-1 small text-muted">
+                Ajoutez, modifiez ou supprimez des trajets disponibles.
+              </p>
+              <button
+                class="btn btn-gradient-primary btn-lg w-100 mt-auto"
+                routerLink="/trajet"
+              >
+                Accéder aux Trajets
+              </button>
+            </div>
+          </div>
+
+          <!-- Card for Managing Bus -->
+          <div class="card admin-card shadow-lg hover-effect">
+            <div class="card-body text-center d-flex flex-column">
+              <i class="fas fa-bus fa-3x mb-3 icon-gradient"></i>
+              <h3 class="card-title h5 fw-bold">Gérer les Bus</h3>
+              <p class="card-text flex-grow-1 small text-muted">
+                Gérez les bus des utilisateurs.
+              </p>
+              <button
+                class="btn btn-gradient-primary btn-lg w-100 mt-auto"
+                routerLink="/ajouterbus"
+              >
+                Ajouter aux Bus
+              </button>
             </div>
           </div>
 
           <!-- Card for Managing Abonnements -->
-          <div class="col-md-4 mb-4">
-            <div class="card admin-card h-100">
-              <div class="card-body text-center d-flex flex-column">
-                <i class="fas fa-id-card fa-3x mb-3" style="color: #080163"></i>
-                <h3 class="card-title h5">Gérer les Abonnements</h3>
-                <p class="card-text flex-grow-1 small">
-                  Gérez les abonnements des utilisateurs.
-                </p>
-                <button class="btn btn-primary btn-lg w-100" routerLink="/abon">
-                  Accéder aux Abonnements
-                </button>
-              </div>
+          <div class="card admin-card shadow-lg hover-effect">
+            <div class="card-body text-center d-flex flex-column">
+              <i class="fas fa-id-card fa-3x mb-3 icon-gradient"></i>
+              <h3 class="card-title h5 fw-bold">Gérer les Abonnements</h3>
+              <p class="card-text flex-grow-1 small text-muted">
+                Gérez les abonnements des utilisateurs.
+              </p>
+              <button
+                class="btn btn-gradient-primary btn-lg w-100 mt-auto"
+                routerLink="/abon"
+              >
+                Accéder aux Abonnements
+              </button>
             </div>
           </div>
 
           <!-- Card for Managing Users -->
-          <div class="col-md-4 mb-4">
-            <div class="card admin-card h-100">
-              <div class="card-body text-center d-flex flex-column">
-                <i class="fas fa-users fa-3x mb-3" style="color: #080163"></i>
-                <h3 class="card-title h5">Gérer les Utilisateurs</h3>
-                <p class="card-text flex-grow-1 small">
-                  Ajoutez, modifiez ou supprimez des utilisateurs.
-                </p>
-                <button
-                  class="btn btn-primary btn-lg w-100"
-                  routerLink="/adduser"
-                >
-                  Accéder aux Utilisateurs
-                </button>
-              </div>
+          <div class="card admin-card shadow-lg hover-effect">
+            <div class="card-body text-center d-flex flex-column">
+              <i class="fas fa-users fa-3x mb-3 icon-gradient"></i>
+              <h3 class="card-title h5 fw-bold">Gérer les Utilisateurs</h3>
+              <p class="card-text flex-grow-1 small text-muted">
+                Ajoutez, modifiez ou supprimez des utilisateurs.
+              </p>
+              <button
+                class="btn btn-gradient-primary btn-lg w-100 mt-auto"
+                routerLink="/ajouterUser"
+              >
+                Accéder aux Utilisateurs
+              </button>
             </div>
           </div>
         </div>

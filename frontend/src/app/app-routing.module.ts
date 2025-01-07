@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AbonnementFormComponent } from './app-admin/add-abon/add-abon.component';
+import { AddBusComponent } from './app-admin/add-bus/add-bus.component';
 import { AddTrajetComponent } from './app-admin/add-trajet/add-trajet.component';
 import { AddUserComponent } from './app-admin/add-user/add-user.component';
 import { AppAdminComponent } from './app-admin/app-admin.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'adduser', component: AddUserComponent },
   { path: 'ticket', component: TicketComponent },
   { path: 'trajets', component: TrajetComponent },
+  { path: 'ajouterbus', component: AddBusComponent },
 
   {
     path: 'admin',
@@ -30,6 +32,7 @@ const routes: Routes = [
       { path: 'trajet', component: AddTrajetComponent },
       { path: 'abon', component: AbonnementFormComponent },
       { path: 'adduser', component: AddUserComponent },
+      { path: 'ajouterbus', component: AddBusComponent },
 
       { path: '', redirectTo: 'admin', pathMatch: 'full' },
     ],

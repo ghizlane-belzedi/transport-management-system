@@ -1,0 +1,58 @@
+/* Animation pour l'image */
+.animated {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Styles pour les cartes */
+.admin-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: #ffffff;
+}
+
+.admin-card:hover {
+  transform: translateY(-10px);
+}
+
+.admin-card .card-body {
+  padding: 2rem;
+}
+
+.admin-card .btn {
+  background-color: #080163;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.admin-card .btn:hover {
+  background-color: #0d025e;
+}
+
+/* Additional styles for better spacing and alignment */
+.admin-dashboard {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+.admin-dashboard h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-dashboard p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
