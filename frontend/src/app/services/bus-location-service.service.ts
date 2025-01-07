@@ -7,17 +7,26 @@ import { BusLocation } from '../models/bus';
   providedIn: 'root',
 })
 export class BusLocationService {
-  private apiUrl = 'http://localhost:8080/api/buses'; // Remplacez par l'URL de votre API
+  private apiUrl = 'http://localhost:8080/api/bus-location'; // URL du backend
 
   constructor(private http: HttpClient) {}
 
-  // Récupérer la position d'un bus par son numéro
-  getBusLocation(busNumber: string): Observable<BusLocation> {
-    return this.http.get<BusLocation>(`${this.apiUrl}/${busNumber}`);
+  // Enregistrer la position d'un bus
+  saveLocation(busId: string, latitude: number, longitude: number): Observable<BusLocation> {
+    return this.http.post<BusLocation>(`${this.apiUrl}/save`, null, {
+      params: { busId, latitude: latitude.toString(), longitude: longitude.toString() },
+    });
   }
 
-  // Récupérer l'adresse à partir des coordonnées (via le backend qui utilise OSM)
+  // Récupérer les positions d'un bus
+  getLocationsByBusId(busId: string): Observable<BusLocation[]> {
+    return this.http.get<BusLocation[]>(`${this.apiUrl}/locations/${busId}`);
+  }
+
+  // Récupérer l'adresse à partir des coordonnées
   getAddress(latitude: number, longitude: number): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/address?lat=${latitude}&lon=${longitude}`);
+    return this.http.get<string>(`${this.apiUrl}/address`, {
+      params: { latitude: latitude.toString(), longitude: longitude.toString() },
+    });
   }
 }

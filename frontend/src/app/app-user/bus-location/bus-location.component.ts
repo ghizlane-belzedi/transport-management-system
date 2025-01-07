@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as L from 'leaflet'; // Importer Leaflet
-import { BusLocation } from 'src/app/models/bus';
+import * as L from 'leaflet';
 import { BusLocationService } from 'src/app/services/bus-location-service.service';
 
 @Component({
@@ -9,8 +8,8 @@ import { BusLocationService } from 'src/app/services/bus-location-service.servic
   styleUrls: ['./bus-location.component.css'],
 })
 export class BusLocationComponent implements OnInit, AfterViewInit {
-  busNumber: string = ''; // Ajoutez cette ligne
-  bus: BusLocation | null = null; // Informations du bus
+  busNumber: string = ''; // Numéro du bus
+  bus: any = null; // Informations du bus
   address: string = ''; // Adresse correspondant aux coordonnées
   private map: any; // Carte Leaflet
   private marker: L.Marker | null = null; // Marqueur pour la position du bus
@@ -49,20 +48,21 @@ export class BusLocationComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.busLocationService.getBusLocation(this.busNumber).subscribe({
+    this.busLocationService.getLocationsByBusId(this.busNumber).subscribe({
       next: (data) => {
         this.bus = data;
         console.log('Position du bus récupérée:', data);
 
         // Ajouter un marqueur pour le bus
+        const latestLocation = data[0]; // Supposons que la dernière position est la première dans la liste
         this.addMarker(
-          data.currentLocation.latitude,
-          data.currentLocation.longitude,
-          `Bus: ${data.busNumber}`
+          latestLocation.currentLocation.latitude,
+          latestLocation.currentLocation.longitude,
+          `Bus: ${this.busNumber}`
         );
 
         // Récupérer l'adresse correspondant à la position du bus
-        this.getAddress(data.currentLocation.latitude, data.currentLocation.longitude);
+        this.getAddress(latestLocation.currentLocation.latitude, latestLocation.currentLocation.longitude);
       },
       error: (err) => {
         console.error('Erreur lors de la récupération de la position du bus:', err);
