@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\hp\kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: geo-location-service
+  name: geo-location-service
+spec:
+  ports:
+    - name: "8085"
+      port: 8085
+      targetPort: 8080
+  selector:
+    io.kompose.service: geo-location-service
+status:
+  loadBalancer: {}

@@ -1,0 +1,96 @@
+version: '3'
+services:
+  # API Gateway (pas de base de données)
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8081:8080"
+    depends_on:
+      - user-service
+      - timetable-service
+      - subscription-service
+    environment:
+      SPRING_APPLICATION_NAME: api-gateway
+
+
+
+  # User Service (utilise PostgreSQL)
+  user-service:
+    build: ./user-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/usermanagement
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: basma
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+
+  # Subscription Service (utilise PostgreSQL)
+  subscription-service:
+    build: ./subscription-service
+    ports:
+      - "8083:8080"
+    depends_on:
+      - postgres-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/usermanagement
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: basma
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+
+  # Timetable Service (utilise MongoDB)
+  timetable-service:
+    build: ./timetable-service
+    ports:
+      - "8181:8080"
+    depends_on:
+      - mongo-db
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo-db:27017/SOA
+
+  # Geo-Location Service (utilise MongoDB)
+  geo-location-service:
+    build: ./geo-location-service
+    ports:
+      - "8085:8080"
+    depends_on:
+      - mongo-db
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo-db:27017/SOA
+
+  # Ticket Service (utilise MongoDB)
+  ticket-service:
+    build: ./ticket-service
+    ports:
+      - "8088:8080"
+    depends_on:
+      - mongo-db
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo-db:27017/SOA
+
+  # Base de données PostgreSQL (pour user-service et subscription-service)
+  postgres-db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: basma
+      POSTGRES_DB: usermanagement
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Base de données MongoDB (pour les autres services)
+  mongo-db:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/SOA
+
+# Volumes pour persister les données
+volumes:
+  postgres_data:
+  mongo_data:
